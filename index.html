@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curricolo Digitale di Istituto — IIS Gregorio Mendel</title>
+<meta name="description" content="Curricolo Digitale dell'IIS Gregorio Mendel di Villa Cortese: competenze digitali, cittadinanza e governance dell'Intelligenza Artificiale. DigComp 3.0, DigCompEdu, Linee guida MIM (D.M. 166/2025), AI Act.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        mendel: { 900:'#12401a', 800:'#1b5e20', 700:'#2e7d32', 500:'#4caf50', 100:'#e6f2e7', 50:'#f4f9f4' },
+        soil:   { 700:'#6d4c41', 500:'#8d6e63', 100:'#efe7e4' },
+        ink:    { 900:'#1a1a1a', 700:'#3f4a41', 500:'#6b756d', 200:'#dfe5e0', 100:'#eef1ee' }
+      },
+      fontFamily: {
+        display: ['"Source Serif 4"','Georgia','serif'],
+        sans: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#f5f5f5; color:#1a1a1a; }
+  .navlink.active { background:#1b5e20; color:#fff; border-color:#1b5e20; }
+  .navlink.active .navnum { color:#4caf50; }
+  .card { transition: transform .18s ease, box-shadow .18s ease; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -14px rgba(27,94,32,.45); }
+  .acc-body { display:none; }
+  .acc.open .acc-body { display:block; }
+  .acc.open .acc-sign { transform: rotate(45deg); }
+  .acc-sign { transition: transform .2s ease; }
+  .fade { animation: fade .35s ease both; }
+  @keyframes fade { from { opacity:0; transform: translateY(6px);} to {opacity:1; transform:none;} }
+  .rail::before { content:''; position:absolute; left:19px; top:8px; bottom:8px; width:2px; background:linear-gradient(#4caf50,#1b5e20); }
+  .tabbtn.on { background:#1b5e20; color:#fff; }
+  .areabtn.on { border-color:#1b5e20; background:#e6f2e7; }
+  @media (prefers-reduced-motion: reduce) { *{animation:none!important; transition:none!important; scroll-behavior:auto!important;} }
+  @media print {
+    nav, .noprint { display:none !important; }
+    section { display:block !important; page-break-after: always; }
+    body { background:#fff; }
+  }
+  :focus-visible { outline:3px solid #4caf50; outline-offset:2px; }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<div class="lg:flex lg:min-h-screen">
+
+  <!-- ============ SIDEBAR ============ -->
+  <nav class="lg:w-72 lg:flex-shrink-0 lg:h-screen lg:sticky lg:top-0 bg-white border-b lg:border-b-0 lg:border-r border-ink-200 flex flex-col z-30 noprint">
+    <div class="px-6 py-5 bg-mendel-800 text-white">
+      <p class="text-[11px] tracking-[0.18em] uppercase text-mendel-100/80">Istituto di Istruzione Superiore</p>
+      <h1 class="font-display text-2xl font-bold leading-tight mt-1">Gregorio Mendel</h1>
+      <p class="text-xs text-mendel-100/90 mt-1">Villa Cortese (MI) — Curricolo Digitale di Istituto</p>
+    </div>
+    <div id="nav" class="flex lg:flex-col gap-1 p-3 overflow-x-auto lg:overflow-visible flex-grow"></div>
+    <div class="hidden lg:block px-5 py-4 border-t border-ink-100 text-[11px] leading-relaxed text-ink-500">
+      <p class="font-semibold text-ink-700">Versione 2.0 — a.s. 2026/2027</p>
+      <p class="mt-1">Documento allegato al PTOF 2025/2028.</p>
+      <p class="mt-2">D.M. 166/2025 · AI Act · DigComp 3.0 · DigCompEdu</p>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main class="flex-grow bg-[#f5f5f5]">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
+
+    <!-- ===== 1. VISIONE ===== -->
+    <section id="s-visione" class="fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Parte prima</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Una bussola, non un adempimento</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Il curricolo digitale è l'infrastruttura pedagogica stabile con cui l'Istituto governa la trasformazione tecnologica: unitaria, progressiva, verificabile.</p>
+
+      <div class="mt-8 bg-white rounded-xl border border-ink-200 p-6 sm:p-7">
+        <p class="leading-relaxed">Negli ultimi anni l'IIS Mendel ha realizzato molte azioni di innovazione: dominio Google Workspace amministrato, Regolamento d'Istituto sull'Intelligenza Artificiale, dossier di conformità, risorse didattiche aperte, formazione fra pari. Il passo che questo documento compie è diverso: <strong>ricondurre quelle azioni a un disegno unitario</strong>, con traguardi per ciascun anno di corso, un monte ore garantito e indicatori di monitoraggio.</p>
+        <p class="leading-relaxed mt-4">In coerenza con le <em>Linee guida per l'introduzione dell'Intelligenza Artificiale nelle istituzioni scolastiche</em> (D.M. 166 del 9 agosto 2025), l'IA non è trattata come innovazione da inseguire, ma come oggetto di governo: si definisce che cosa è ammesso, chi risponde, come si verifica.</p>
+      </div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Tre convinzioni fondanti</h3>
+      <div id="pillars" class="grid sm:grid-cols-3 gap-4 mt-4"></div>
+
+      <div class="mt-8 border-l-4 border-mendel-500 bg-mendel-50 rounded-r-xl p-6">
+        <h4 class="font-display text-xl font-semibold text-mendel-900">Il valore formativo del limite</h4>
+        <p class="mt-2 leading-relaxed text-ink-700">Non tutto ciò che è tecnicamente possibile è didatticamente opportuno. La scrittura, la traduzione, l'argomentazione, il calcolo e la ricerca bibliografica hanno valore formativo proprio nella fatica del procedimento. Dove questo accade, l'Istituto sceglie consapevolmente di limitare il ricorso all'IA generativa: è parte del curricolo, non una sua eccezione.</p>
+      </div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Il mandato del PTOF 2025/2028</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Il curricolo non nasce su iniziativa autonoma del Team Digitale: dà seguito a impegni già assunti dal Piano triennale, approvato dal Collegio dei Docenti il 29 ottobre 2025 e dal Consiglio d'Istituto il 12 dicembre 2025.</p>
+      <div id="ptof" class="mt-4 space-y-3"></div>
+
+      <div class="mt-8 border-l-4 border-soil-500 bg-soil-50 rounded-r-xl p-6">
+        <h4 class="font-display text-xl font-semibold text-mendel-900">Il digitale, qui, era già nei campi</h4>
+        <p class="mt-2 leading-relaxed text-ink-700">Il progetto “Mendel 4.0”, avviato nell'a.s. 2021/2022, ha dotato la scuola di sensoristica per i dati climatici, sistemi di mappatura e geolocalizzazione, trappole fitosanitarie a riconoscimento basato su intelligenza artificiale, impianti idroponici e aeroponici a gestione automatizzata. Il digitale non è arrivato con l'IA generativa: mancava il quadro pedagogico che ne facesse oggetto esplicito di insegnamento e di valutazione.</p>
+      </div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Concorso alle priorità del RAV e del Piano di Miglioramento</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Gli indicatori del capitolo di monitoraggio sono costruiti per alimentare la rendicontazione già prevista dall'Istituto, non per duplicarla.</p>
+      <div id="ravpdm" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Risorse e dotazioni disponibili</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Le azioni previste sono sostenibili perché gli ambienti esistono già, realizzati con PON, bandi di Regione Lombardia e investimenti PNRR.</p>
+      <div id="dotazioni" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Azioni già realizzate su digitale e IA</h3>
+      <div id="stato" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Le quattro criticità che il curricolo affronta</h3>
+      <div id="criticita" class="mt-4 space-y-3"></div>
+    </section>
+
+    <!-- ===== 2. NORMATIVA ===== -->
+    <section id="s-normativa" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Parte seconda</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Quadro normativo e framework</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Tre livelli regolativi — europeo, nazionale, d'Istituto — e la ricaduta operativa che l'IIS Mendel ne ricava.</p>
+
+      <div id="norme" class="relative rail mt-8 space-y-4 pl-14"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">I due framework europei adottati</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Complementari, non intercambiabili: il primo descrive le competenze dei cittadini in formazione, il secondo quelle professionali di chi insegna.</p>
+      <div class="grid md:grid-cols-2 gap-5 mt-5">
+        <div class="bg-white rounded-xl border-t-4 border-mendel-700 border-x border-b border-ink-200 p-6">
+          <p class="text-xs font-semibold tracking-widest uppercase text-mendel-700">Studenti</p>
+          <h4 class="font-display text-2xl font-bold text-mendel-900 mt-1">DigComp 3.0</h4>
+          <p class="text-sm text-ink-500 mt-1">Centro Comune di Ricerca della Commissione europea, novembre 2025</p>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div><dt class="font-semibold text-ink-900">Struttura</dt><dd class="text-ink-700">5 aree, 21 competenze, corredate da risultati di apprendimento e livelli di padronanza progressivi.</dd></div>
+            <div><dt class="font-semibold text-ink-900">Novità decisiva</dt><dd class="text-ink-700">L'intelligenza artificiale non è un'area separata: attraversa tutte le competenze. Rafforzati inoltre il contrasto ai deepfake, la sicurezza avanzata e la sostenibilità digitale.</dd></div>
+            <div><dt class="font-semibold text-ink-900">Uso nel curricolo</dt><dd class="text-ink-700">Binario B — percorso dello studente.</dd></div>
+          </dl>
+        </div>
+        <div class="bg-white rounded-xl border-t-4 border-soil-500 border-x border-b border-ink-200 p-6">
+          <p class="text-xs font-semibold tracking-widest uppercase text-soil-700">Docenti</p>
+          <h4 class="font-display text-2xl font-bold text-mendel-900 mt-1">DigCompEdu</h4>
+          <p class="text-sm text-ink-500 mt-1">Quadro europeo per la competenza digitale degli educatori</p>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div><dt class="font-semibold text-ink-900">Struttura</dt><dd class="text-ink-700">6 aree, 22 competenze, 6 livelli di padronanza da A1 «Novizio» a C2 «Pioniere».</dd></div>
+            <div><dt class="font-semibold text-ink-900">Perché lo adottiamo</dt><dd class="text-ink-700">Descrive la competenza professionale come progressione, non come possesso o assenza: è la base dei percorsi formativi differenziati.</dd></div>
+            <div><dt class="font-semibold text-ink-900">Uso nel curricolo</dt><dd class="text-ink-700">Binario A — sviluppo professionale.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-mendel-900 text-white rounded-xl p-6 sm:p-7">
+        <h4 class="font-display text-xl font-semibold">Perché la coerenza con i due framework conta anche sul piano amministrativo</h4>
+        <p class="mt-2 text-mendel-100 leading-relaxed text-sm">Il D.M. 219 dell'11 novembre 2025, che finanzia con risorse PNRR gli snodi formativi per la transizione digitale sull'IA, indica espressamente DigComp 3.0 e DigCompEdu come quadri per progettare e rendicontare la formazione. Un piano costruito su questi framework è quindi certificabile e rendicontabile, non solo pedagogicamente fondato.</p>
+      </div>
+    </section>
+
+    <!-- ===== 3. STUDENTI ===== -->
+    <section id="s-studenti" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Binario B</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Il curricolo dello studente</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Cinque aree DigComp 3.0 declinate sull'identità tecnico-agraria dell'Istituto. Non un curricolo digitale generico applicato a una scuola agraria: il curricolo digitale <em>di</em> una scuola agraria.</p>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Le cinque aree, declinate</h3>
+      <p class="text-sm text-ink-500 mt-1">Seleziona un'area per leggerne obiettivi e applicazioni disciplinari.</p>
+      <div id="areabtns" class="flex flex-wrap gap-2 mt-4"></div>
+      <div id="areapanel" class="mt-4"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Progressione verticale: dal primo anno all'Esame di Stato</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Ogni traguardo è verificabile e ancorato a evidenze documentabili. Nessun anno ripete il precedente.</p>
+      <div id="anni" class="mt-5 space-y-3"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Monte ore: dentro le discipline, non in aggiunta</h3>
+      <div class="grid lg:grid-cols-5 gap-6 mt-4 items-start">
+        <div class="lg:col-span-3 bg-white rounded-xl border border-ink-200 p-5">
+          <div style="position:relative;height:300px"><canvas id="chartOre"></canvas></div>
+        </div>
+        <div class="lg:col-span-2 space-y-4">
+          <div class="bg-mendel-800 text-white rounded-xl p-5">
+            <p class="font-display text-4xl font-bold">106</p>
+            <p class="text-sm text-mendel-100 mt-1">ore nel quinquennio, di cui 34 in Educazione civica</p>
+          </div>
+          <p class="text-sm text-ink-700 leading-relaxed">Le ore indicate non sono aggiuntive né moduli separati: sono il tempo che ciascun consiglio di classe destina, dentro il monte ore ordinario, ad attività in cui la competenza digitale è <strong>oggetto esplicito di insegnamento e valutazione</strong>. La rendicontazione passa dalla programmazione del consiglio di classe e dal registro elettronico.</p>
+          <p class="text-xs text-ink-500 italic">Proposta del Team Digitale per l'Istituto Tecnico diurno, da confermare in Collegio dei Docenti.</p>
+        </div>
+      </div>
+
+      <h4 class="font-display text-xl font-semibold text-mendel-900 mt-8">Dove si colloca, indirizzo per indirizzo</h4>
+      <div id="ancoraggi" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Valutare quando l'IA è nella stanza</h3>
+      <div id="valutazione" class="grid sm:grid-cols-3 gap-4 mt-4"></div>
+      <div class="mt-6 bg-white rounded-xl border border-ink-200 overflow-hidden">
+        <div class="px-5 py-3 bg-mendel-800 text-white font-semibold text-sm">Rubrica sintetica della competenza digitale</div>
+        <div class="overflow-x-auto"><table class="w-full text-sm">
+          <thead><tr class="bg-mendel-50 text-mendel-900">
+            <th class="text-left px-4 py-2 font-semibold">Dimensione</th><th class="text-left px-4 py-2 font-semibold">Base</th><th class="text-left px-4 py-2 font-semibold">Intermedio</th><th class="text-left px-4 py-2 font-semibold">Avanzato</th>
+          </tr></thead>
+          <tbody id="rubrica" class="divide-y divide-ink-100"></tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- ===== 4. DOCENTI ===== -->
+    <section id="s-docenti" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Binario A</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Sviluppo professionale dei docenti</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">La competenza digitale professionale è una progressione, non un possesso. Ogni collega si colloca in un livello e ha un passo successivo praticabile.</p>
+
+      <div class="grid lg:grid-cols-5 gap-6 mt-8 items-start">
+        <div class="lg:col-span-2 bg-white rounded-xl border border-ink-200 p-5">
+          <p class="text-sm font-semibold text-ink-900">Priorità d'Istituto sulle sei aree</p>
+          <p class="text-xs text-ink-500 mt-1 mb-2">Livello di priorità assegnato per l'a.s. 2026/2027.</p>
+          <div style="position:relative;height:290px"><canvas id="chartEdu"></canvas></div>
+        </div>
+        <div class="lg:col-span-3">
+          <div id="eduareas" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Tre fasce, tre percorsi</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">La formazione non è un percorso unico. La rilevazione dei bisogni colloca ciascun docente in una fascia; l'adesione resta volontaria.</p>
+      <div id="fasce" class="grid md:grid-cols-3 gap-4 mt-5"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Il corso base sull'IA — settembre/ottobre 2026</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Quattro incontri da due ore, aperti a chiunque. Impostazione deliberatamente non tecnicistica: l'obiettivo non è insegnare uno strumento, ma restituire capacità di giudizio.</p>
+      <div id="corso" class="mt-5 grid sm:grid-cols-2 gap-4"></div>
+      <p class="mt-4 text-sm text-ink-700">A supporto del percorso: la <strong>Libreria Prompt per i docenti</strong> già pubblicata, il <strong>Regolamento d'Istituto sull'IA</strong> e il documento sugli <strong>esempi di buone pratiche</strong>.</p>
+
+      <div class="mt-8 border-l-4 border-mendel-500 bg-white rounded-r-xl p-6 border-y border-r border-ink-200">
+        <h4 class="font-display text-xl font-semibold text-mendel-900">Rilevazione dei bisogni</h4>
+        <p class="mt-2 text-ink-700 leading-relaxed">Entro settembre il Team Digitale somministra al personale docente un questionario di autovalutazione costruito sulle sei aree DigCompEdu. Una rilevazione analoga, coordinata dagli uffici, riguarda il personale ATA. Gli esiti aggregati e anonimi sono presentati al Collegio e costituiscono la linea di base del monitoraggio.</p>
+      </div>
+    </section>
+
+    <!-- ===== 5. ORGANIZZAZIONE ===== -->
+    <section id="s-organizzazione" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Binario C</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Il digitale nell'organizzazione</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Ammesso a due condizioni non negoziabili: ogni esito è validato da un operatore umano e nessuna decisione con effetti sulle persone è assunta in modo automatizzato.</p>
+
+      <div id="orgtabs" class="flex flex-wrap gap-2 mt-8"></div>
+      <div id="orgpanel" class="mt-4"></div>
+
+      <div class="mt-10 bg-white rounded-xl border-l-4 border-soil-700 border-y border-r border-ink-200 p-6">
+        <h4 class="font-display text-xl font-semibold text-soil-700">Limiti espliciti: che cosa l'Istituto non fa</h4>
+        <p class="mt-2 text-ink-700">L'IIS Mendel non impiega e non intende impiegare sistemi di IA per:</p>
+        <ul id="limiti" class="mt-3 space-y-2 text-ink-700"></ul>
+        <p class="mt-4 text-sm text-ink-500">Tali impieghi rientrano fra i sistemi ad alto rischio individuati dall'Allegato III dell'AI Act e sono esclusi in via di autolimitazione.</p>
+      </div>
+    </section>
+
+    <!-- ===== 6. GOVERNANCE ===== -->
+    <section id="s-governance" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Parte terza</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Governance, etica e conformità</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Chi risponde di che cosa, quali principi vincolano le scelte, come si introduce un nuovo sistema.</p>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div>
+          <h3 class="font-display text-xl font-semibold text-mendel-900 border-b-2 border-mendel-500 inline-block pb-1">Requisiti etici</h3>
+          <div id="etici" class="mt-4 space-y-2"></div>
+        </div>
+        <div>
+          <h3 class="font-display text-xl font-semibold text-soil-700 border-b-2 border-soil-500 inline-block pb-1">Requisiti normativi</h3>
+          <div id="normativi" class="mt-4 space-y-2"></div>
+        </div>
+      </div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Il ciclo di implementazione (modello MIM)</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Ogni introduzione di un sistema di IA nei processi d'Istituto segue cinque fasi documentate.</p>
+      <div id="ciclo" class="grid sm:grid-cols-5 gap-3 mt-5"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Ruoli e responsabilità</h3>
+      <div class="mt-4 bg-white rounded-xl border border-ink-200 overflow-hidden">
+        <div class="overflow-x-auto"><table class="w-full text-sm">
+          <thead><tr class="bg-mendel-800 text-white">
+            <th class="text-left px-4 py-3 font-semibold">Soggetto</th><th class="text-left px-4 py-3 font-semibold">Responsabilità</th><th class="text-left px-4 py-3 font-semibold">Atti e strumenti</th>
+          </tr></thead>
+          <tbody id="ruoli" class="divide-y divide-ink-100"></tbody>
+        </table></div>
+      </div>
+
+      <div class="mt-8 bg-mendel-50 border border-mendel-100 rounded-xl p-6">
+        <h4 class="font-display text-xl font-semibold text-mendel-900">Registro dei sistemi di IA</h4>
+        <p class="mt-2 text-ink-700 leading-relaxed">L'Istituto istituisce e aggiorna almeno annualmente un registro dei sistemi di IA utilizzati nei processi didattici e amministrativi, con indicazione dell'ambito d'uso, degli utenti, della classificazione del rischio e delle misure adottate. Il registro compilato è allegato riservato del curricolo ed è messo a disposizione degli organi di controllo su richiesta.</p>
+      </div>
+    </section>
+
+    <!-- ===== 7. ATTUAZIONE ===== -->
+    <section id="s-attuazione" class="hidden fade">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Parte quarta</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Attuazione e monitoraggio</h2>
+      <p class="text-lg text-ink-700 mt-3 max-w-3xl">Il monitoraggio è condizione di credibilità del curricolo: senza indicatori, un curricolo è una dichiarazione d'intenti.</p>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-10">Cronoprogramma triennale</h3>
+      <div id="crono" class="relative rail mt-5 space-y-4 pl-14"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Indicatori di monitoraggio</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Rilevati dal Team Digitale e presentati al Collegio dei Docenti entro giugno.</p>
+      <div id="kpi" class="grid sm:grid-cols-2 gap-3 mt-5"></div>
+      <p class="mt-5 text-sm text-ink-700 max-w-3xl">Al monitoraggio quantitativo si affianca una rilevazione qualitativa: questionario alle classi terze e quinte e incontro annuale di restituzione con i rappresentanti di studenti e genitori.</p>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Documenti collegati</h3>
+      <div id="allegati" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <div class="mt-12 border-t border-ink-200 pt-6 text-sm text-ink-500">
+        <p>Documento elaborato dal Team per l'Innovazione Digitale dell'IIS «Gregorio Mendel» in coerenza con le Linee guida MIM per l'introduzione dell'Intelligenza Artificiale nelle istituzioni scolastiche (D.M. 166/2025), il Regolamento (UE) 2024/1689 e i quadri europei DigComp 3.0 e DigCompEdu.</p>
+      </div>
+    </section>
+
+  </div>
+  </main>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const SECTIONS = [
+  ['visione','Visione e contesto'],
+  ['normativa','Quadro normativo'],
+  ['studenti','Curricolo studenti'],
+  ['docenti','Formazione docenti'],
+  ['organizzazione','Organizzazione'],
+  ['governance','Governance ed etica'],
+  ['attuazione','Attuazione e monitoraggio']
+];
+
+const PILLARS = [
+  ['Competenza di cittadinanza','Non riguarda l\'uso dei dispositivi, ma la capacità di partecipare, decidere e tutelarsi in ambienti mediati da algoritmi.'],
+  ['Competenza professionalizzante','Agricoltura di precisione, sensoristica di campo, tracciabilità di filiera: il digitale è parte del profilo tecnico-agrario in uscita.'],
+  ['Responsabilità collettiva','Non è delegata al docente innovatore né al solo Animatore Digitale: coinvolge dirigenza, dipartimenti, DSGA, ATA, famiglie e studenti.']
+];
+
+const PTOF = [
+  ['Formazione per la transizione digitale (D.M. 66/2023)','Il PTOF prevede espressamente che \u00ABverr\u00e0 aggiornato il curricolo digitale per gli studenti\u00BB e che \u00ABsar\u00e0 sviluppato un Piano di Miglioramento Digitale\u00BB, assumendo DigComp e DigCompEdu come quadri di riferimento. Questo documento \u00e8 l\'atto con cui l\'impegno viene assolto, aggiornando il riferimento a DigComp 3.0 (novembre 2025).'],
+  ['Leadership per l\'innovazione digitale','Il PTOF prevede la formazione di almeno quindici docenti con specializzazione sull\'intelligenza artificiale, laboratori tematici nella seconda annualit\u00e0 e una Comunit\u00e0 di Pratiche: corrispondono rispettivamente alla Fascia 3, alla Fascia 2 e alla sede permanente di scambio metodologico.'],
+  ['Competenze STEM e multilinguistiche (D.M. 65/2023)','Il Piano collega il potenziamento delle competenze digitali degli studenti al quadro DigComp. Il curricolo fornisce la progressione verticale e i traguardi annuali che il PTOF non declina in dettaglio.'],
+  ['Azioni PNSD','Le azioni #4 (ambienti), #6 (BYOD), #7 (\u201cAgricoltura 4.0\u201d), #15 (Cittadini in rete), #16 (alfabetizzazione digitale) e #23 (risorse educative aperte) trovano qui la cornice pedagogica unitaria.'],
+  ['Piano di formazione del personale','Fra le aree di aggiornamento il PTOF indica esplicitamente le \u00ABtematiche della transizione digitale e A.I.\u00BB. Per il personale ATA prevede il rafforzamento delle competenze digitali e tecniche.'],
+  ['Educazione civica','Il curricolo d\'Istituto, aggiornato in ottemperanza al D.M. 183/2024, prevede 33 ore annue e include il nucleo \u201cCittadinanza digitale\u201d: il presente documento ne alimenta contenuti, evidenze e rubriche.']
+];
+
+const RAVPDM = [
+  ['Priorit\u00e0 RAV \u2014 INVALSI inglese','Uso critico di strumenti digitali e di IA per l\'esposizione linguistica e la comprensione di fonti tecniche in lingua; raccordo con CLIL, certificazioni PET e FCE, \u201cEnglish Talks\u201d del Progetto UTAH.'],
+  ['Priorit\u00e0 RAV \u2014 Competenze chiave e convivenza civile','Identit\u00e0 digitale, reputazione, contrasto al cyberbullismo, disinformazione e deepfake: temi gi\u00e0 presidiati dagli incontri di \u201cCultura della legalit\u00e0\u201d con Carabinieri e Polizia Postale.'],
+  ['Priorit\u00e0 RAV \u2014 Risultati a distanza','Gestione dell\'informazione, trattamento dei dati e uso dichiarato dell\'IA sono prerequisiti espliciti degli studi universitari e dei percorsi ITS.'],
+  ['PdM Percorso 1 \u2014 Offerta formativa differenziata','Formazione dei docenti su accessibilit\u00e0, semplificazione dei testi e adattamento dei materiali (area 5 DigCompEdu), a supporto di PEI e PDP.'],
+  ['PdM Percorso 2 \u2014 Rispetto delle regole','Comportamento responsabile negli ambienti digitali come oggetto esplicito di valutazione, in raccordo con i criteri del voto di condotta.'],
+  ['PdM Percorso 3 \u2014 Qualit\u00e0 della comunicazione','Regole condivise per la comunicazione digitale d\'Istituto e supporto all\'adeguamento del sito ai requisiti PNRR M1C1 e all\'accessibilit\u00e0.']
+];
+
+const DOTAZIONI = [
+  ['Aule e connettivit\u00e0','Trenta aule con Digital Board sui due edifici; collegamento in fibra ottica; rete cablata e wireless potenziata con PON FESR.'],
+  ['Ambienti specializzati','Due aule TEAL; aula-laboratorio di Data Processing con sedici postazioni; laboratorio di informatica con ventidue postazioni; aula multifunzionale con tribune per il debate e realt\u00e0 aumentata.'],
+  ['Dispositivi','Cinquanta portatili e quindici Chromebook, in parte destinati al comodato d\'uso: presupposto dell\'equit\u00e0 di accesso.'],
+  ['Laboratori d\'indirizzo','Trasformazione e Conservazione dei prodotti con mini-caseificio e compostaggio a sensoristica digitalizzata; Biotecnologie Vegetali con microscopia digitale; impianto idroponico e aeroponico; meristematica.'],
+  ['Agricoltura 4.0','Rilevamento topografico robotizzato e GPS; droni tecnici; sensori di umidit\u00e0 e temperatura del suolo; telemetria climatica e pedologica; trappole digitali con riconoscimento IA; fertirrigazione; stampa digitale per tracciabilit\u00e0.'],
+  ['Ambienti produttivi didattici','Serra di circa 900 mq; azienda di San Grato, circa 250 ettari, con apiario, serra fungaia e serre orticole.'],
+  ['Piattaforme','Google Workspace amministrato (Drive e Classroom, azione PNSD #23); registro ARGO e segreteria digitale; piattaforma UNICA; COSMI.ICF per i PEI.']
+];
+
+const STATO = [
+  ['Regolamentazione','Regolamento d\'Istituto per l\'uso dell\'IA (v1.0), pubblicato nella sezione «Le Carte».','In vigore'],
+  ['Conformità','Dossier AI Act con roadmap e stato di attuazione; raccordo con il DPO.','Attivo'],
+  ['Ambiente digitale','Google Workspace amministrato, con accessi agli strumenti di IA differenziati per unità organizzativa ed età.','A regime'],
+  ['Risorse per i docenti','Libreria Prompt (oltre 130 prompt), esempi di buone pratiche, pagina di orientamento agli strumenti.','Pubblicate'],
+  ['Risorse per gli studenti','Materiali di cittadinanza digitale con casi reali; risorse disciplinari interattive.','Pubblicate'],
+  ['Figure di sistema','Animatore Digitale, Team per l\'Innovazione Digitale, Team Buone Pratiche.','Costituite']
+];
+
+const CRITICITA = [
+  ['Livelli disomogenei fra i docenti','Una minoranza di utilizzatori avanzati e un\'area di colleghi che manifesta diffidenza verso l\'IA.','Percorsi differenziati per livello DigCompEdu, con partenza da un corso base non tecnicistico.'],
+  ['Uso non dichiarato dell\'IA da parte degli studenti','L\'uso c\'è già, ma avviene in assenza di regole condivise sulla trasparenza.','Dichiarazione d\'uso negli elaborati valutati e rubriche che valutano il processo.'],
+  ['Frammentazione delle esperienze','Attività digitali di qualità concentrate in singole classi, senza progressione verticale.','Traguardi annuali per l\'intero quinquennio e monte ore minimo garantito.'],
+  ['Assenza di ricognizione dei sistemi in uso','Non esiste un quadro dei sistemi di IA effettivamente impiegati nei processi.','Registro d\'Istituto dei sistemi di IA con classificazione del rischio.']
+];
+
+const NORME = [
+  ['Regolamento (UE) 2024/1689 — AI Act','Approccio basato sul rischio; art. 4 sull\'alfabetizzazione in materia di IA; Allegato III, che classifica come ad alto rischio numerosi sistemi impiegati nell\'istruzione.','L\'Istituto opera come <em>deployer</em>: garantisce alfabetizzazione al personale, tiene un registro dei sistemi in uso, non adotta sistemi automatizzati per decisioni valutative o di ammissione.'],
+  ['Legge 23 settembre 2025, n. 132','Disposizioni nazionali in materia di IA: trasparenza, centralità della persona, tutela dei minori, ambito educativo.','Recepimento nei principi etici del curricolo e nel Regolamento d\'Istituto.'],
+  ['D.M. 166 del 9 agosto 2025 — Linee guida MIM','Principi di riferimento, requisiti etici, tecnici e normativi, framework di implementazione in cinque fasi, governance condivisa, servizio dedicato su UNICA.','Struttura portante della sezione governance e del ciclo di implementazione; censimento delle sperimentazioni su UNICA.'],
+  ['D.M. 219 dell\'11 novembre 2025 — Snodi formativi IA (PNRR M4C1)','Finanziamento di percorsi formativi sull\'IA per il personale, con progettazione e rendicontazione secondo DigComp 3.0 e DigCompEdu.','Il piano di formazione è costruito sui due framework: risulta quindi rendicontabile in caso di adesione a reti di snodo.'],
+  ['Regolamento (UE) 2016/679 — GDPR','Minimizzazione, limitazione delle finalità, privacy by design e by default, tutela dei minori, valutazione d\'impatto.','Divieto di inserire dati personali in sistemi non amministrati; preferenza per ambienti d\'Istituto; raccordo con il DPO.'],
+  ['Legge 92/2019 — Educazione civica','Cittadinanza digitale come nucleo concettuale obbligatorio dell\'insegnamento trasversale.','Il curricolo digitale fornisce contenuti e rubriche del nucleo «Cittadinanza digitale» per tutte le classi.'],
+  ['PNSD e Piano Scuola 4.0','Ambienti di apprendimento innovativi, figure di sistema, transizione digitale.','Continuità con ambienti, dotazioni e figure già attivate dall\'Istituto.']
+];
+
+const ANCORAGGI = [
+  ['Biennio del Tecnico','<strong>Tecnologie informatiche</strong> (3 ore settimanali, A041) è la sede naturale delle aree 3 e 5. L\'ora settimanale di Educazione civica si colloca in Diritto ed economia e Storia, con il docente di Diritto referente per la valutazione.'],
+  ['Triennio del Tecnico','Produzioni vegetali, Genio rurale, Biotecnologie agrarie, Trasformazione dei prodotti, Gestione dell\'ambiente e del territorio, Economia-estimo. Referente per Educazione civica: docente di Economia-Estimo o Produzioni vegetali.'],
+  ['IeFP e V anno Professionale','Informatica (classi I e II, in compresenza con ITP) ed Esercitazioni agrarie. Monte ore ridotto a 16 ore annue nel triennio di qualifica, con priorità alle aree 1, 2 e 4 e forte ancoraggio all\'Alternanza.'],
+  ['Corsi serali (IDA)','22 ore settimanali e utenza adulta: nucleo essenziale di 12 ore annue su identità digitale, SPID e servizi pubblici, sicurezza, uso professionale dell\'IA e tracciabilità, riconoscendo i crediti già valorizzati nel Patto Formativo Individuale.']
+];
+
+const AREE = [
+  {n:'1', t:'Ricerca, valutazione e gestione dell\'informazione',
+   o:'Interagire criticamente con i sistemi di IA: distinguere fonti umane e contenuti sintetici, interrogare i dati, riconoscere le allucinazioni dei modelli generativi, valutare l\'attendibilità di una fonte tecnica.',
+   d:'<strong>Produzioni vegetali, Biotecnologie agrarie, Inglese.</strong> Verifica di output generativi su tecniche colturali mediante confronto con fonti scientifiche, disciplinari di produzione e dati reali rilevati nell\'azienda di San Grato e nella serra d\'Istituto; lettura critica delle segnalazioni prodotte dalle trappole digitali a riconoscimento automatico prima di ogni decisione fitosanitaria.'},
+  {n:'2', t:'Comunicazione e collaborazione',
+   o:'Gestire l\'interazione uomo–macchina–uomo; riconoscere deepfake e contenuti manipolati; collaborare in ambienti ibridi; comprendere reputazione e identità digitale.',
+   d:'<strong>Educazione civica, Italiano, Diritto.</strong> Analisi di casi reali di disinformazione agroalimentare; dibattito regolato — anche nell\'aula multifunzionale attrezzata per il debate — su privacy, impatto ambientale dell\'IA e proprietà dei dati generati in azienda. Raccordo con le «English Talks» del Progetto UTAH sui temi dell\'Agenda 2030.'},
+  {n:'3', t:'Creazione di contenuti digitali',
+   o:'Padroneggiare la co-creazione: usare l\'IA generativa come supporto, dichiararne l\'uso, rispettare diritto d\'autore e licenze aperte.',
+   d:'<strong>Trasformazione dei prodotti, Economia-estimo, Formazione Scuola-Lavoro.</strong> Relazioni tecniche e schede colturali; etichettatura e tracciabilità con stampa digitale nel laboratorio di Trasformazione; documentazione dei prodotti erboristici e florovivaistici destinati alla vendita, con validazione umana e dichiarazione d\'uso.'},
+  {n:'4', t:'Sicurezza e benessere digitale',
+   o:'Proteggere identità, dati e dispositivi; riconoscere i bias algoritmici; tutelare il benessere psicofisico; comprendere l\'impatto ambientale delle tecnologie (sostenibilità digitale).',
+   d:'<strong>Scienze motorie, Scienze integrate, Educazione civica.</strong> Consumo energetico e idrico dei data center in rapporto alla sostenibilità agricola; filtri bolla, attenzione e diritto alla disconnessione. Raccordo con gli incontri di «Cultura della legalità» su cellulari e social, con Carabinieri e Polizia Postale, aperti anche ai genitori.'},
+  {n:'5', t:'Identificazione e risoluzione dei problemi',
+   o:'Concettualizzare soluzioni delegando compiti operativi alle macchine, mantenendo il controllo decisionale; riconoscere i limiti propri e degli strumenti; formulare la domanda giusta.',
+   d:'<strong>Genio rurale, Tecnologie informatiche, Gestione dell\'ambiente e del territorio.</strong> Nell\'aula-laboratorio di Data Processing, elaborazione dei dati acquisiti per telemetria e con rilievo GPS e drone; IA per ottimizzare la fertirrigazione o stimare rese, smontando l\'effetto «scatola magica» degli algoritmi decisionali.'}
+];
+
+const ANNI = [
+  ['Classe 1ª','Base','Identità digitale e password sicure; netiquette e uso dell\'account istituzionale; ricerca guidata e valutazione elementare delle fonti; primo riconoscimento dei contenuti generati da IA.','Patto d\'uso dell\'account sottoscritto · scheda di valutazione di tre fonti su un tema agrario · test di ingresso e di uscita.'],
+  ['Classe 2ª','Base / Intermedio','Produzione di documenti e fogli di calcolo per rilievi agrari; sicurezza dei dispositivi; benessere digitale; riconoscimento di deepfake e disinformazione.','Foglio di calcolo con dati meteo o di campo · prodotto multimediale di sensibilizzazione · unità di Educazione civica documentata.'],
+  ['Classe 3ª','Intermedio','Uso consapevole e dichiarato dell\'IA generativa nello studio; prompting efficace; verifica sistematica degli output; diritto d\'autore e licenze.','Relazione tecnica con dichiarazione d\'uso allegata · confronto documentato fra output generativo e fonte scientifica.'],
+  ['Classe 4ª','Intermedio / Avanzato','Trattamento e visualizzazione di dati; agricoltura di precisione e sensoristica; sicurezza dei dati in ambito professionale; competenze digitali nei PCTO.','Dataset elaborato e rappresentato graficamente · relazione di PCTO con sezione sugli strumenti digitali utilizzati.'],
+  ['Classe 5ª','Avanzato','Progettazione di soluzioni digitali per un problema agronomico reale; valutazione critica dell\'impatto etico, occupazionale e ambientale dell\'IA nel settore agroalimentare; e-portfolio.','Elaborato interdisciplinare per l\'Esame di Stato con componente digitale · e-portfolio orientativo · presentazione pubblica.']
+];
+
+const VALUTAZIONE = [
+  ['Dichiarazione d\'uso','Per ogni elaborato significativo lo studente indica se e come ha usato l\'IA, quali parti sono state generate e quali verifiche ha svolto. La dichiarazione non penalizza: la sua omissione, se accertata, sì.'],
+  ['Valutazione del processo','Le rubriche valorizzano scalette, versioni intermedie, bibliografia e discussione orale, riducendo il peso del prodotto finale isolato.'],
+  ['Compiti resistenti','Prove ancorate a dati locali non replicabili da un modello: rilievi dell\'azienda agraria, osservazioni di campo, interviste al territorio, laboratorio.']
+];
+
+const RUBRICA = [
+  ['Valutazione delle fonti','Distingue fonti attendibili se guidato.','Verifica autonomamente le fonti e riconosce contenuti generati da IA.','Confronta fonti divergenti e argomenta la scelta con criteri espliciti.'],
+  ['Uso dell\'IA generativa','Uso occasionale e non dichiarato.','Uso per compiti definiti, dichiarato e verificato.','Integra l\'IA in un processo progettuale, ne riconosce i limiti e sceglie quando non usarla.'],
+  ['Sicurezza e dati','Applica le regole essenziali di protezione dell\'account.','Gestisce consapevolmente dati e impostazioni di privacy.','Valuta i rischi di un servizio digitale prima di adottarlo.'],
+  ['Etica e responsabilità','Riconosce l\'esistenza di regole d\'uso.','Rispetta diritto d\'autore e riservatezza altrui.','Argomenta le implicazioni etiche, ambientali e sociali delle scelte tecnologiche.']
+];
+
+const EDU = [
+  ['1. Coinvolgimento professionale','Comunicazione istituzionale, collaborazione fra colleghi, pratica riflessiva, sviluppo professionale continuo.','Alta',3],
+  ['2. Risorse digitali','Selezione, creazione, modifica e condivisione delle risorse; diritto d\'autore e licenze.','Alta',3],
+  ['3. Pratiche di insegnamento','Progettazione, guida, apprendimento collaborativo e autoregolato.','Media',2],
+  ['4. Valutazione','Strategie di valutazione, analisi delle evidenze, feedback e pianificazione.','Alta',3],
+  ['5. Valorizzazione degli studenti','Accessibilità, inclusione, differenziazione, coinvolgimento attivo.','Alta',3],
+  ['6. Facilitare la competenza digitale','Alfabetizzazione informativa, creazione di contenuti, benessere e problem solving degli studenti.','Alta',3]
+];
+
+const FASCE = [
+  ['Fascia 1 — Avvio','A1 – A2','Usa strumenti digitali essenziali; manifesta diffidenza o disagio verso l\'IA generativa.','Corso base sull\'IA: che cos\'è, che cosa non è, privacy, primi usi didattici, riduzione del timore.'],
+  ['Fascia 2 — Integrazione','B1 – B2','Usa con sicurezza gli strumenti d\'Istituto; sperimenta l\'IA in modo non sistematico.','Laboratori disciplinari: UDA con componente digitale, rubriche di processo, adattamento dei materiali per l\'inclusione.'],
+  ['Fascia 3 — Guida','C1 – C2','Progetta e innova; è punto di riferimento per i colleghi.','Formazione di formatori interni: tutoraggio fra pari, produzione di risorse d\'Istituto, coordinamento delle sperimentazioni.']
+];
+
+const CORSO = [
+  ['Incontro 1','Che cos\'è l\'intelligenza artificiale: breve storia, come funziona un modello generativo, che cosa il modello non sa fare. Sfatare i luoghi comuni.','Glossario condiviso essenziale'],
+  ['Incontro 2','Privacy, dati e regole d\'Istituto: che cosa non si inserisce mai in un prompt; il Regolamento d\'Istituto; ambienti amministrati e ambienti pubblici.','Checklist personale di sicurezza'],
+  ['Incontro 3','Usi didattici concreti: preparazione di materiali, semplificazione di testi, supporto all\'inclusione, sintesi di documenti. Laboratorio guidato.','Un materiale didattico prodotto e verificato'],
+  ['Incontro 4','Valutare nell\'era dell\'IA: prove resistenti, rubriche di processo, dichiarazione d\'uso da parte degli studenti.','Una prova di verifica riprogettata']
+];
+
+const ORG = [
+  ['Dirigenza','Supporto all\'analisi di documenti programmatici (PTOF, RAV, PdM); riorganizzazione di orari complessi, comprese le turnazioni di laboratorio e dell\'azienda agraria; pianificazione della formazione del personale.','Nessun dato personale identificativo nei prompt; la decisione resta integralmente in capo al Dirigente.'],
+  ['DSGA e segreteria','Redazione assistita di comunicazioni ordinarie e circolari; sintesi di normativa; ottimizzazione dell\'inventario di beni, serre, macchine agricole e attrezzature di laboratorio.','Verifica puntuale dei riferimenti normativi citati; divieto di trattamento di dati particolari.'],
+  ['Comunicazione','Supporto alla stesura e revisione dei contenuti del sito e delle comunicazioni alle famiglie; verifiche di accessibilità.','Responsabilità editoriale umana; rispetto delle linee guida sull\'accessibilità.'],
+  ['Azienda agraria e laboratori','Analisi di dati colturali, meteorologici e fitosanitari a supporto delle scelte tecniche.','Validazione da parte del docente tecnico-pratico o del responsabile dell\'azienda agraria.']
+];
+
+const LIMITI = [
+  'attribuire o rettificare valutazioni degli apprendimenti;',
+  'determinare l\'ammissione o l\'assegnazione alle classi;',
+  'profilare comportamenti di studenti o personale;',
+  'effettuare sorveglianza durante lo svolgimento delle prove.'
+];
+
+const ETICI = [
+  ['Intervento e sorveglianza umana','I sistemi di IA affiancano l\'azione educativa e organizzativa, ma non la sostituiscono. Spetta sempre all\'operatore umano validare i risultati, mantenere il controllo strategico e assumere la responsabilità decisionale.'],
+  ['Trasparenza e spiegabilità','Tutti gli attori, inclusi studenti e famiglie, devono essere consapevoli quando interagiscono con un sistema di IA o quando un contenuto è stato generato sinteticamente.'],
+  ['Contrasto ai bias e inclusione','I docenti vigilano sulle allucinazioni dei modelli e sulle distorsioni sistematiche, assicurando che le tecnologie promuovano l\'equità e non generino discriminazioni, anche linguistiche o culturali.'],
+  ['Equità di accesso','Nessuna attività curricolare può presupporre la disponibilità di dispositivi personali o servizi a pagamento: l\'accesso è garantito dai laboratori e dal dominio d\'Istituto.'],
+  ['Sostenibilità','L\'impatto energetico e materiale delle tecnologie digitali è oggetto di riflessione curricolare, in coerenza con la vocazione ambientale dell\'Istituto.']
+];
+
+const NORMATIVI = [
+  ['Minimizzazione','È vietato inserire dati personali identificativi — nomi di studenti, valutazioni, certificazioni BES/DSA, dati sanitari o familiari — nei prompt di sistemi non amministrati dall\'Istituto.'],
+  ['Privacy by design e by default','Sono preferiti ambienti amministrati dall\'Istituto, con profilazione disattivata e accessi differenziati per età, come già configurato nella console di amministrazione del dominio.'],
+  ['Diritto di non partecipazione','Studenti e famiglie possono decidere consapevolmente sull\'utilizzo dei dati per finalità connesse a sistemi di IA, senza pregiudizio per le opportunità educative: sono previste attività equivalenti.'],
+  ['Valutazione d\'impatto','Prima di adottare un nuovo sistema che tratti dati di minori, il Team Digitale sottopone al DPO una scheda di valutazione preliminare; ove necessario si procede a DPIA.'],
+  ['Alfabetizzazione obbligatoria','In attuazione dell\'art. 4 dell\'AI Act, l\'Istituto garantisce a tutto il personale che utilizza sistemi di IA un livello adeguato di alfabetizzazione, documentato dal piano di formazione.']
+];
+
+const CICLO = [
+  ['Definizione','Individuazione del bisogno reale e degli obiettivi; verifica che l\'IA sia davvero la risposta adeguata.','Team Digitale'],
+  ['Pianificazione','Analisi dei rischi, verifica di conformità, misure di mitigazione, risorse necessarie.','Team Digitale con DPO'],
+  ['Adozione','Configurazione, formazione degli utilizzatori, informativa a studenti e famiglie, avvio sperimentale.','Dirigente'],
+  ['Monitoraggio','Rilevazione degli effetti, raccolta di segnalazioni, verifica del rispetto dei vincoli.','Team Digitale'],
+  ['Conclusione','Valutazione finale: messa a regime, revisione o dismissione del sistema.','Collegio dei Docenti']
+];
+
+const RUOLI = [
+  ['Dirigente scolastico','Indirizzo strategico; adozione dei sistemi; titolarità del trattamento; approvazione del registro dei sistemi di IA.','Atti di indirizzo, determinazioni'],
+  ['Animatore digitale e Team Digitale','Progettazione e aggiornamento del curricolo; coordinamento della formazione; tenuta del registro; monitoraggio; raccordo con le azioni PNSD e PNRR.','Curricolo, piano di formazione, report annuale'],
+  ['Referente gestione sito web','Pubblicazione e manutenzione dei documenti; verifica dell\'accessibilità e coerenza con il template PNRR M1C1.','Sito istituzionale, sezione «Le Carte»'],
+  ['Nucleo Interno di Valutazione e Commissione PTOF','Integrazione degli indicatori nella rendicontazione d\'Istituto; coerenza con RAV, PdM e Rendicontazione sociale.','RAV, PdM, Rendicontazione sociale'],
+  ['Coordinatore dell\'Educazione civica','Raccordo fra il nucleo «Cittadinanza digitale» e i traguardi del curricolo; coordinamento dei referenti nei consigli di classe.','Curricolo di Ed. civica, griglie di valutazione'],
+  ['Referente bullismo e cyberbullismo','Raccordo con le azioni di prevenzione; segnalazione di fenomeni connessi ad ambienti digitali e contenuti sintetici.','Piano di prevenzione'],
+  ['Collegio dei Docenti','Approvazione del curricolo e del piano di formazione; criteri di valutazione; conferma del monte ore.','Delibere collegiali'],
+  ['Consiglio di Istituto','Adozione del curricolo quale parte integrante dell\'offerta formativa; approvazione degli impegni di spesa.','Delibere del Consiglio'],
+  ['Dipartimenti disciplinari','Declinazione dei traguardi nelle programmazioni; progettazione di prove resistenti; condivisione di materiali.','Verbali e programmazioni'],
+  ['Consigli di classe','Attuazione del monte ore; documentazione delle attività; valutazione delle competenze.','Programmazione, registro elettronico'],
+  ['Funzioni strumentali inclusione e DSA','Verifica che gli strumenti digitali adottati siano accessibili e coerenti con le misure compensative di PEI e PDP.','PEI, PDP, Piano Annuale per l\'Inclusione'],
+  ['Ufficio tecnico e responsabili di laboratorio','Gestione delle dotazioni; compatibilità tecnica dei sistemi; supporto alle attività con componente digitale.','Inventario, procedure di laboratorio'],
+  ['Responsabile dell\'azienda agraria','Validazione tecnica degli esiti dei sistemi predittivi e della sensoristica impiegati a fini didattici e produttivi.','Registri aziendali, quaderno di campagna'],
+  ['DPO','Parere sui trattamenti; supporto alla valutazione d\'impatto; verifica della conformità al GDPR.','Pareri, DPIA, registro dei trattamenti'],
+  ['DSGA e personale ATA','Applicazione delle regole d\'uso nei processi amministrativi; conservazione della documentazione.','Procedure di ufficio'],
+  ['Studenti e famiglie','Rispetto del Regolamento sull\'IA; esercizio dei diritti sui dati; partecipazione alla valutazione del curricolo.','Patto di corresponsabilità, informative']
+];
+
+const CRONO = [
+  ['Settembre 2026','Presentazione del curricolo al Collegio; questionario DigCompEdu; avvio del corso base sull\'IA; recepimento nei dipartimenti.','Delibera di approvazione; linea di base dei livelli'],
+  ['Ottobre – dicembre 2026','Attuazione del monte ore nelle programmazioni; costituzione del registro dei sistemi di IA; adozione della dichiarazione d\'uso.','Programmazioni allineate; registro compilato'],
+  ['Gennaio – marzo 2027','Laboratori disciplinari per la Fascia 2; prime sperimentazioni documentate; revisione delle prove nei dipartimenti.','Almeno una UDA documentata per dipartimento'],
+  ['Aprile – giugno 2027','Monitoraggio intermedio; raccolta delle evidenze; report al Collegio; revisione del documento.','Report annuale; versione 2.1 del curricolo'],
+  ['A.s. 2027/2028','Estensione dei percorsi di Fascia 3; consolidamento della progressione verticale; eventuale adesione a reti di snodo formativo.','Rete interna di tutoraggio fra pari'],
+  ['A.s. 2028/2029','Valutazione triennale complessiva; aggiornamento del profilo digitale in uscita.','Curricolo versione 3.0']
+];
+
+const KPI = [
+  ['40%','dei docenti partecipa ad almeno un\'azione formativa sul digitale o sull\'IA','Registro presenze e attestati'],
+  ['25%','dei rispondenti dichiara un avanzamento di livello DigCompEdu','Questionario di autovalutazione'],
+  ['80%','delle classi documenta l\'attuazione del monte ore','Programmazioni e registro elettronico'],
+  ['100%','dei dipartimenti riprogetta almeno una prova in ottica resistente all\'IA','Verbali dipartimentali'],
+  ['60%','degli elaborati del triennio è corredato di dichiarazione d\'uso','Rilevazione a campione'],
+  ['70%','degli studenti raggiunge il livello atteso per anno di corso','Rubrica di valutazione']
+];
+
+const ALLEGATI = [
+  ['PTOF 2025/2028','Documento fondamentale di cui questo curricolo è articolazione attuativa.'],
+  ['RAV e Piano di Miglioramento','Fonte delle priorità e sede della rendicontazione degli indicatori.'],
+  ['Curricolo di Educazione civica d\'Istituto','Contiene il nucleo «Cittadinanza digitale» alimentato da questo documento.'],
+  ['Piano di formazione docenti e ATA','Recepisce i percorsi differenziati e il corso base sull\'IA.'],
+  ['Piano Annuale per l\'Inclusione','Coerenza fra strumenti digitali e misure compensative di PEI e PDP.'],
+  ['Curricolo verticale e griglie delle competenze chiave','Raccordo fra competenza digitale e le altre sette competenze chiave europee.'],
+  ['Regolamento per l\'uso dell\'IA (v1.0)','Norma di comportamento vincolante per personale e studenti.'],
+  ['Dossier di conformità all\'AI Act','Documentazione degli obblighi del deployer e delle misure adottate.'],
+  ['Libreria Prompt per i docenti','Repertorio di prompt generici e disciplinari a supporto della progettazione.'],
+  ['Esempi di buone pratiche','Casistica commentata di usi appropriati e non appropriati dell\'IA.'],
+  ['Materiali di cittadinanza digitale','Casi di studio reali per l\'Educazione civica.'],
+  ['Registro dei sistemi di IA','Allegato riservato, aggiornamento annuale.']
+];
+
+/* ================= RENDER ================= */
+const $ = id => document.getElementById(id);
+const esc = s => s;
+
+// nav
+$('nav').innerHTML = SECTIONS.map(([id,label],i)=>`
+  <button data-sec="${id}" class="navlink flex-shrink-0 text-left px-4 py-2.5 rounded-lg border border-ink-200 hover:bg-mendel-50 text-sm font-medium flex items-center gap-3 whitespace-nowrap lg:whitespace-normal ${i===0?'active':''}">
+    <span class="navnum text-[11px] font-bold text-mendel-700 tabular-nums">0${i+1}</span><span>${label}</span>
+  </button>`).join('');
+
+document.querySelectorAll('.navlink').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.navlink').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  SECTIONS.forEach(([id])=>$('s-'+id).classList.add('hidden'));
+  const s=$('s-'+b.dataset.sec); s.classList.remove('hidden');
+  s.classList.remove('fade'); void s.offsetWidth; s.classList.add('fade');
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+
+$('pillars').innerHTML = PILLARS.map(([t,d],i)=>`
+  <div class="card bg-white rounded-xl border border-ink-200 p-5">
+    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-mendel-100 text-mendel-800 text-xs font-bold">${i+1}</span>
+    <h4 class="font-display text-lg font-semibold text-mendel-900 mt-3">${t}</h4>
+    <p class="text-sm text-ink-700 mt-2 leading-relaxed">${d}</p>
+  </div>`).join('');
+
+$('ancoraggi').innerHTML = ANCORAGGI.map(([t,d])=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4">
+    <p class="text-xs font-semibold tracking-wide uppercase text-mendel-700">${t}</p>
+    <p class="text-sm text-ink-700 mt-1 leading-relaxed">${d}</p>
+  </div>`).join('');
+
+$('ptof').innerHTML = PTOF.map(([t,d],i)=>`
+  <div class="acc bg-white rounded-lg border border-ink-200">
+    <button class="w-full text-left px-5 py-4 flex items-center gap-4" onclick="this.parentNode.classList.toggle('open')">
+      <span class="text-mendel-700 font-bold tabular-nums text-sm">0${i+1}</span>
+      <span class="font-semibold flex-grow">${t}</span>
+      <span class="acc-sign text-mendel-700 text-xl leading-none">+</span>
+    </button>
+    <div class="acc-body px-5 pb-5 pl-14">
+      <p class="text-sm text-ink-700 leading-relaxed">${d}</p>
+    </div>
+  </div>`).join('');
+
+$('ravpdm').innerHTML = RAVPDM.map(([t,d])=>`
+  <div class="bg-white rounded-lg border-l-4 border-mendel-500 border-y border-r border-ink-200 p-4">
+    <p class="text-xs font-semibold tracking-wide uppercase text-mendel-700">${t}</p>
+    <p class="text-sm text-ink-700 mt-1 leading-relaxed">${d}</p>
+  </div>`).join('');
+
+$('dotazioni').innerHTML = DOTAZIONI.map(([t,d])=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4">
+    <p class="text-xs font-semibold tracking-wide uppercase text-soil-700">${t}</p>
+    <p class="text-sm text-ink-700 mt-1 leading-relaxed">${d}</p>
+  </div>`).join('');
+
+$('stato').innerHTML = STATO.map(([a,d,s])=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4 flex gap-4">
+    <div class="flex-grow">
+      <p class="text-xs font-semibold tracking-wide uppercase text-mendel-700">${a}</p>
+      <p class="text-sm text-ink-700 mt-1 leading-relaxed">${d}</p>
+    </div>
+    <span class="flex-shrink-0 self-start text-[11px] font-semibold px-2.5 py-1 rounded-full bg-mendel-100 text-mendel-800">${s}</span>
+  </div>`).join('');
+
+$('criticita').innerHTML = CRITICITA.map(([t,d,r],i)=>`
+  <div class="acc bg-white rounded-lg border border-ink-200">
+    <button class="w-full text-left px-5 py-4 flex items-center gap-4" onclick="this.parentNode.classList.toggle('open')">
+      <span class="text-mendel-700 font-bold tabular-nums text-sm">0${i+1}</span>
+      <span class="font-semibold flex-grow">${t}</span>
+      <span class="acc-sign text-mendel-700 text-xl leading-none">+</span>
+    </button>
+    <div class="acc-body px-5 pb-5 pl-14">
+      <p class="text-sm text-ink-700">${d}</p>
+      <p class="text-sm mt-3 pl-4 border-l-2 border-mendel-500"><strong class="text-mendel-800">Risposta del curricolo.</strong> ${r}</p>
+    </div>
+  </div>`).join('');
+
+$('norme').innerHTML = NORME.map(([t,c,r])=>`
+  <div class="relative bg-white rounded-lg border border-ink-200 p-5">
+    <span class="absolute -left-[46px] top-6 w-4 h-4 rounded-full bg-white border-[3px] border-mendel-700"></span>
+    <h4 class="font-semibold text-mendel-900">${t}</h4>
+    <p class="text-sm text-ink-700 mt-2">${c}</p>
+    <p class="text-sm mt-3 bg-mendel-50 rounded p-3"><strong class="text-mendel-800">Ricaduta per l'Istituto.</strong> ${r}</p>
+  </div>`).join('');
+
+$('areabtns').innerHTML = AREE.map((a,i)=>`
+  <button class="areabtn ${i===0?'on':''} text-left px-4 py-2.5 rounded-lg border-2 border-ink-200 bg-white text-sm font-medium hover:border-mendel-500 max-w-[15rem]" data-i="${i}">
+    <span class="text-mendel-700 font-bold">${a.n}.</span> ${a.t}
+  </button>`).join('');
+function paintArea(i){
+  const a=AREE[i];
+  $('areapanel').innerHTML=`
+    <div class="fade bg-white rounded-xl border border-ink-200 overflow-hidden">
+      <div class="bg-mendel-800 text-white px-6 py-4 flex items-baseline gap-3">
+        <span class="font-display text-3xl font-bold">${a.n}</span>
+        <h4 class="font-display text-xl font-semibold">${a.t}</h4>
+      </div>
+      <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-ink-100">
+        <div class="p-6"><p class="text-xs font-semibold tracking-widest uppercase text-mendel-700">Obiettivi di apprendimento</p><p class="mt-2 text-ink-700 leading-relaxed">${a.o}</p></div>
+        <div class="p-6 bg-mendel-50"><p class="text-xs font-semibold tracking-widest uppercase text-soil-700">Declinazione all'IIS Mendel</p><p class="mt-2 text-ink-700 leading-relaxed">${a.d}</p></div>
+      </div>
+    </div>`;
+  document.querySelectorAll('.areabtn').forEach((b,j)=>b.classList.toggle('on',i===j));
+}
+document.querySelectorAll('.areabtn').forEach(b=>b.addEventListener('click',()=>paintArea(+b.dataset.i)));
+paintArea(0);
+
+$('anni').innerHTML = ANNI.map(([a,l,t,e])=>`
+  <div class="acc bg-white rounded-lg border border-ink-200 overflow-hidden">
+    <button class="w-full text-left px-5 py-4 flex items-center gap-4" onclick="this.parentNode.classList.toggle('open')">
+      <span class="font-display text-lg font-bold text-mendel-800 w-20 flex-shrink-0">${a}</span>
+      <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-mendel-100 text-mendel-800 flex-shrink-0">${l}</span>
+      <span class="flex-grow"></span>
+      <span class="acc-sign text-mendel-700 text-xl leading-none">+</span>
+    </button>
+    <div class="acc-body px-5 pb-5">
+      <p class="text-sm text-ink-700 leading-relaxed"><strong class="text-ink-900">Traguardi.</strong> ${t}</p>
+      <p class="text-sm text-ink-700 mt-3 leading-relaxed bg-mendel-50 rounded p-3"><strong class="text-mendel-800">Evidenze attese.</strong> ${e}</p>
+    </div>
+  </div>`).join('');
+
+$('valutazione').innerHTML = VALUTAZIONE.map(([t,d])=>`
+  <div class="card bg-white rounded-xl border-t-4 border-mendel-700 border-x border-b border-ink-200 p-5">
+    <h4 class="font-semibold text-mendel-900">${t}</h4>
+    <p class="text-sm text-ink-700 mt-2 leading-relaxed">${d}</p>
+  </div>`).join('');
+
+$('rubrica').innerHTML = RUBRICA.map(r=>`
+  <tr class="align-top"><td class="px-4 py-3 font-semibold text-mendel-900 w-40">${r[0]}</td>
+  <td class="px-4 py-3 text-ink-700">${r[1]}</td><td class="px-4 py-3 text-ink-700">${r[2]}</td><td class="px-4 py-3 text-ink-700">${r[3]}</td></tr>`).join('');
+
+$('eduareas').innerHTML = EDU.map(([t,d,p])=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4 flex gap-4">
+    <div class="flex-grow"><p class="font-semibold text-sm text-mendel-900">${t}</p><p class="text-sm text-ink-700 mt-1">${d}</p></div>
+    <span class="flex-shrink-0 self-start text-[11px] font-semibold px-2.5 py-1 rounded-full ${p==='Alta'?'bg-mendel-800 text-white':'bg-ink-100 text-ink-700'}">${p}</span>
+  </div>`).join('');
+
+$('fasce').innerHTML = FASCE.map(([t,l,p,c],i)=>`
+  <div class="card bg-white rounded-xl border border-ink-200 overflow-hidden flex flex-col">
+    <div class="px-5 py-3 ${i===0?'bg-mendel-500':i===1?'bg-mendel-700':'bg-mendel-900'} text-white">
+      <p class="font-semibold">${t}</p><p class="text-xs opacity-90">${l}</p>
+    </div>
+    <div class="p-5 flex-grow"><p class="text-sm text-ink-700">${p}</p>
+      <p class="text-sm mt-3 pt-3 border-t border-ink-100"><strong class="text-mendel-800">Percorso.</strong> ${c}</p></div>
+  </div>`).join('');
+
+$('corso').innerHTML = CORSO.map(([n,c,p])=>`
+  <div class="bg-white rounded-xl border border-ink-200 p-5">
+    <div class="flex items-center justify-between">
+      <p class="font-semibold text-mendel-900">${n}</p>
+      <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-ink-100 text-ink-700">2 ore</span>
+    </div>
+    <p class="text-sm text-ink-700 mt-2 leading-relaxed">${c}</p>
+    <p class="text-sm mt-3 pt-3 border-t border-ink-100"><strong class="text-mendel-800">Prodotto atteso.</strong> ${p}</p>
+  </div>`).join('');
+
+$('orgtabs').innerHTML = ORG.map(([t],i)=>`<button class="tabbtn ${i===0?'on':''} px-4 py-2 rounded-lg border border-ink-200 bg-white text-sm font-medium" data-i="${i}">${t}</button>`).join('');
+function paintOrg(i){
+  const [t,a,v]=ORG[i];
+  $('orgpanel').innerHTML=`<div class="fade grid md:grid-cols-2 gap-4">
+    <div class="bg-white rounded-xl border border-ink-200 p-6"><p class="text-xs font-semibold tracking-widest uppercase text-mendel-700">Applicazioni ammesse</p><p class="mt-2 text-ink-700 leading-relaxed">${a}</p></div>
+    <div class="bg-white rounded-xl border-l-4 border-soil-500 border-y border-r border-ink-200 p-6"><p class="text-xs font-semibold tracking-widest uppercase text-soil-700">Vincoli e cautele</p><p class="mt-2 text-ink-700 leading-relaxed">${v}</p></div>
+  </div>`;
+  document.querySelectorAll('.tabbtn').forEach((b,j)=>b.classList.toggle('on',i===j));
+}
+document.querySelectorAll('.tabbtn').forEach(b=>b.addEventListener('click',()=>paintOrg(+b.dataset.i)));
+paintOrg(0);
+
+$('limiti').innerHTML = LIMITI.map(l=>`<li class="flex gap-3"><span class="text-soil-700 font-bold">✕</span><span>${l}</span></li>`).join('');
+
+const accList = (arr,color) => arr.map(([t,d])=>`
+  <div class="acc bg-white rounded-lg border-l-4 ${color} border-y border-r border-ink-200">
+    <button class="w-full text-left px-5 py-3.5 flex items-center gap-3" onclick="this.parentNode.classList.toggle('open')">
+      <span class="font-semibold text-sm flex-grow">${t}</span><span class="acc-sign text-mendel-700 text-xl leading-none">+</span>
+    </button>
+    <div class="acc-body px-5 pb-4"><p class="text-sm text-ink-700 leading-relaxed">${d}</p></div>
+  </div>`).join('');
+$('etici').innerHTML = accList(ETICI,'border-mendel-500');
+$('normativi').innerHTML = accList(NORMATIVI,'border-soil-500');
+
+$('ciclo').innerHTML = CICLO.map(([t,d,r],i)=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4 relative">
+    <span class="font-display text-3xl font-bold text-mendel-100 absolute top-2 right-3 leading-none">${i+1}</span>
+    <p class="font-semibold text-mendel-900 text-sm relative">${t}</p>
+    <p class="text-xs text-ink-700 mt-2 leading-relaxed">${d}</p>
+    <p class="text-[11px] text-mendel-700 font-semibold mt-3 pt-2 border-t border-ink-100">${r}</p>
+  </div>`).join('');
+
+$('ruoli').innerHTML = RUOLI.map(([s,r,a],i)=>`
+  <tr class="align-top ${i%2?'bg-mendel-50/50':''}"><td class="px-4 py-3 font-semibold text-mendel-900 w-52">${s}</td>
+  <td class="px-4 py-3 text-ink-700">${r}</td><td class="px-4 py-3 text-ink-500 text-xs w-48">${a}</td></tr>`).join('');
+
+$('crono').innerHTML = CRONO.map(([p,a,e])=>`
+  <div class="relative bg-white rounded-lg border border-ink-200 p-5">
+    <span class="absolute -left-[46px] top-6 w-4 h-4 rounded-full bg-white border-[3px] border-mendel-700"></span>
+    <p class="font-semibold text-mendel-900">${p}</p>
+    <p class="text-sm text-ink-700 mt-2">${a}</p>
+    <p class="text-sm mt-3 text-mendel-800"><strong>Esito atteso.</strong> ${e}</p>
+  </div>`).join('');
+
+$('kpi').innerHTML = KPI.map(([v,d,m])=>`
+  <div class="bg-white rounded-xl border border-ink-200 p-5 flex gap-4 items-start">
+    <p class="font-display text-3xl font-bold text-mendel-700 tabular-nums w-20 flex-shrink-0">${v}</p>
+    <div><p class="text-sm text-ink-900 leading-snug">${d}</p><p class="text-xs text-ink-500 mt-1.5">${m}</p></div>
+  </div>`).join('');
+
+$('allegati').innerHTML = ALLEGATI.map(([t,d])=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4">
+    <p class="font-semibold text-sm text-mendel-900">${t}</p><p class="text-sm text-ink-700 mt-1">${d}</p>
+  </div>`).join('');
+
+/* ================= CHARTS ================= */
+Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
+Chart.defaults.color = '#3f4a41';
+
+new Chart($('chartOre'), {
+  type:'bar',
+  data:{
+    labels:['1ª','2ª','3ª','4ª','5ª'],
+    datasets:[
+      {label:'Educazione civica', data:[8,8,6,6,6], backgroundColor:'#1b5e20'},
+      {label:'Discipline di indirizzo', data:[4,6,10,12,12], backgroundColor:'#4caf50'},
+      {label:'Area generale', data:[8,6,6,4,4], backgroundColor:'#8d6e63'}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{x:{stacked:true, grid:{display:false}}, y:{stacked:true, title:{display:true,text:'ore annue'}, grid:{color:'#eef1ee'}}},
+    plugins:{legend:{position:'bottom', labels:{boxWidth:12, padding:14}},
+      title:{display:true, text:'Ore annue dedicate alla competenza digitale', padding:{bottom:12}, font:{size:13,weight:'600'}}}
+  }
+});
+
+new Chart($('chartEdu'), {
+  type:'radar',
+  data:{
+    labels:EDU.map(e=>e[0].split('. ')[1].split(' ').slice(0,2).join(' ')),
+    datasets:[{label:'Priorità', data:EDU.map(e=>e[3]),
+      backgroundColor:'rgba(76,175,80,.22)', borderColor:'#1b5e20', pointBackgroundColor:'#1b5e20', borderWidth:2}]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{r:{min:0,max:3,ticks:{stepSize:1, display:false}, pointLabels:{font:{size:10}}, grid:{color:'#dfe5e0'}, angleLines:{color:'#dfe5e0'}}},
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>['','Bassa','Media','Alta'][c.raw]}}}
+  }
+});
+</script>
+</body>
+</html>
