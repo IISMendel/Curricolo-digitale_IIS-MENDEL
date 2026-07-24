@@ -308,8 +308,8 @@ tailwind.config = {
       <p class="text-ink-700 mt-2 max-w-3xl">La scala che segue traduce l'approccio basato sul rischio dell'AI Act in un criterio operativo utilizzabile da ciascun docente prima di iniziare un'attività. Il principio è semplice: più cresce l'impatto delle decisioni sulla persona dello studente, più aumenta la responsabilità professionale di chi impiega lo strumento.</p>
       <div id="rischi" class="grid md:grid-cols-3 gap-4 mt-5"></div>
 
-      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Il registro dei sistemi di IA</h3>
-      <p class="text-ink-700 mt-2 max-w-3xl">L'Istituto istituisce e aggiorna almeno annualmente un registro dei sistemi di IA impiegati nei processi didattici e amministrativi. Il registro compilato è allegato riservato del curricolo ed è messo a disposizione degli organi di controllo su richiesta.</p>
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Il registro degli usi dell'IA</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">L'Istituto istituisce e tiene aggiornato un registro degli usi dell'intelligenza artificiale nei processi didattici e amministrativi. Il registro compilato è allegato riservato del curricolo ed è messo a disposizione degli organi di controllo su richiesta.</p>
 
       <div class="mt-5 bg-white rounded-xl border-l-4 border-soil-700 border-y border-r border-ink-200 p-6">
         <h4 class="font-display text-lg font-semibold text-soil-700">Perché serve: il rischio della «Shadow AI»</h4>
@@ -317,6 +317,8 @@ tailwind.config = {
       </div>
 
       <p class="mt-6 text-ink-700 max-w-3xl">Il registro risponde a cinque domande essenziali: <strong>sapere</strong> quali sistemi sono in uso, <strong>capire</strong> per quali finalità, <strong>valutare</strong> quali dati vi vengono immessi, <strong>distinguere</strong> gli usi accettabili da quelli rischiosi o da escludere, <strong>conservare</strong> le evidenze didattiche e organizzative prodotte.</p>
+
+      <p class="mt-4 text-ink-700 max-w-3xl">Non va confuso con l'<strong>elenco degli strumenti approvati</strong> previsto dall'art. 6, comma 3 del Regolamento d'Istituto e pubblicato sul sito: quello dichiara quali piattaforme sono autorizzate e a quali condizioni, questo annota le attività effettivamente svolte. Il primo risponde alla domanda «che cosa è autorizzato», il secondo a «che cosa è stato fatto».</p>
 
       <h4 class="font-display text-xl font-semibold text-mendel-900 mt-8">Campi essenziali</h4>
       <div id="registro" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4"></div>
@@ -432,12 +434,12 @@ const CRITICITA = [
   ['Livelli disomogenei fra i docenti','Una minoranza di utilizzatori avanzati e un\'area di colleghi che manifesta diffidenza verso l\'IA.','Percorsi differenziati per livello DigCompEdu, con partenza da un corso base non tecnicistico.'],
   ['Uso non dichiarato dell\'IA da parte degli studenti','L\'uso c\'è già, ma avviene in assenza di regole condivise sulla trasparenza.','Dichiarazione d\'uso negli elaborati valutati e rubriche che valutano il processo.'],
   ['Frammentazione delle esperienze','Attività digitali di qualità concentrate in singole classi, senza progressione verticale.','Traguardi annuali per l\'intero quinquennio e monte ore minimo garantito.'],
-  ['Assenza di ricognizione dei sistemi in uso','Non esiste un quadro dei sistemi di IA effettivamente impiegati nei processi: l\'adozione avviene dal basso e resta invisibile all\'Istituto.','Registro d\'Istituto dei sistemi di IA con classificazione del rischio.'],
+  ['Assenza di ricognizione dei sistemi in uso','Non esiste un quadro dei sistemi di IA effettivamente impiegati nei processi: l\'adozione avviene dal basso e resta invisibile all\'Istituto.','Registro d\'Istituto degli usi dell\'IA, con classificazione del rischio e indicazione delle misure adottate.'],
   ['Delega passiva e perdita di competenza','L\'atteggiamento «tanto lo fa l\'IA» produce appiattimento del linguaggio, riduzione della capacità di giudizio e progressiva perdita di padronanza. Riguarda gli studenti quanto i docenti e il personale.','Verifica critica dell\'output come passaggio obbligato e non facoltativo; valutazione del processo e non del solo prodotto; individuazione esplicita degli ambiti in cui l\'Istituto sceglie di non ricorrere all\'IA.']
 ];
 
 const NORME = [
-  ['Regolamento (UE) 2024/1689 — AI Act','Approccio basato sul rischio; art. 4 sull\'alfabetizzazione in materia di IA; Allegato III, che classifica come ad alto rischio numerosi sistemi impiegati nell\'istruzione.','L\'Istituto opera come <em>deployer</em>: garantisce alfabetizzazione al personale, tiene un registro dei sistemi in uso, non adotta sistemi automatizzati per decisioni valutative o di ammissione.'],
+  ['Regolamento (UE) 2024/1689 — AI Act','Approccio basato sul rischio; art. 4 sull\'alfabetizzazione in materia di IA; Allegato III, che classifica come ad alto rischio numerosi sistemi impiegati nell\'istruzione.','L\'Istituto opera come <em>deployer</em>: garantisce alfabetizzazione al personale, tiene il registro degli usi dell\'IA e l\'elenco degli strumenti autorizzati, non adotta sistemi automatizzati per decisioni valutative o di ammissione.'],
   ['Legge 23 settembre 2025, n. 132','Disposizioni nazionali in materia di IA: trasparenza, centralità della persona, tutela dei minori, ambito educativo.','Recepimento nei principi etici del curricolo e nel Regolamento d\'Istituto.'],
   ['D.M. 166 del 9 agosto 2025 — Linee guida MIM','Principi di riferimento, requisiti etici, tecnici e normativi, framework di implementazione in cinque fasi, governance condivisa, servizio dedicato su UNICA.','Struttura portante della sezione governance e del ciclo di implementazione; censimento delle sperimentazioni su UNICA.'],
   ['D.M. 219 dell\'11 novembre 2025 — Snodi formativi IA (PNRR M4C1)','Finanziamento di percorsi formativi sull\'IA per il personale, con progettazione e rendicontazione secondo DigComp 3.0 e DigCompEdu.','Il piano di formazione è costruito sui due framework: risulta quindi rendicontabile in caso di adesione a reti di snodo.'],
@@ -557,8 +559,8 @@ const CICLO = [
 ];
 
 const RUOLI = [
-  ['Dirigente scolastico','Indirizzo strategico; adozione dei sistemi; titolarità del trattamento; approvazione del registro dei sistemi di IA.','Atti di indirizzo, determinazioni'],
-  ['Animatore digitale e Team Digitale','Progettazione e aggiornamento del curricolo; coordinamento della formazione; tenuta del registro; monitoraggio; raccordo con le azioni PNSD e PNRR.','Curricolo, piano di formazione, report annuale'],
+  ['Dirigente scolastico','Indirizzo strategico; adozione dei sistemi; titolarità del trattamento; approvazione del registro degli usi dell\'IA e dell\'elenco degli strumenti autorizzati.','Atti di indirizzo, determinazioni'],
+  ['Animatore digitale e Team Digitale','Progettazione e aggiornamento del curricolo; coordinamento della formazione; tenuta del registro degli usi; monitoraggio; raccordo con le azioni PNSD e PNRR.','Curricolo, piano di formazione, report annuale'],
   ['Referente gestione sito web','Pubblicazione e manutenzione dei documenti; verifica dell\'accessibilità e coerenza con il template PNRR M1C1.','Sito istituzionale, sezione «Le Carte»'],
   ['Nucleo Interno di Valutazione e Commissione PTOF','Integrazione degli indicatori nella rendicontazione d\'Istituto; coerenza con RAV, PdM e Rendicontazione sociale.','RAV, PdM, Rendicontazione sociale'],
   ['Coordinatore dell\'Educazione civica','Raccordo fra il nucleo «Cittadinanza digitale» e i traguardi del curricolo; coordinamento dei referenti nei consigli di classe.','Curricolo di Ed. civica, griglie di valutazione'],
@@ -577,7 +579,7 @@ const RUOLI = [
 
 const CRONO = [
   ['Settembre 2026','Presentazione del curricolo al Collegio; questionario DigCompEdu; avvio del corso base sull\'IA; recepimento nei dipartimenti.','Delibera di approvazione; linea di base dei livelli'],
-  ['Ottobre – dicembre 2026','Attuazione del monte ore nelle programmazioni; costituzione del registro dei sistemi di IA; adozione della dichiarazione d\'uso.','Programmazioni allineate; registro compilato'],
+  ['Ottobre – dicembre 2026','Attuazione del monte ore nelle programmazioni; costituzione del registro degli usi dell\'IA; adozione della dichiarazione d\'uso.','Programmazioni allineate; registro compilato'],
   ['Gennaio – marzo 2027','Laboratori disciplinari per la Fascia 2; prime sperimentazioni documentate; revisione delle prove nei dipartimenti.','Almeno una UDA documentata per dipartimento'],
   ['Aprile – giugno 2027','Monitoraggio intermedio; raccolta delle evidenze; report al Collegio; revisione del documento.','Report annuale; versione 2.1 del curricolo'],
   ['A.s. 2027/2028','Estensione dei percorsi di Fascia 3; consolidamento della progressione verticale; eventuale adesione a reti di snodo formativo.','Rete interna di tutoraggio fra pari'],
@@ -605,12 +607,12 @@ const ALLEGATI = [
   ['Libreria Prompt per i docenti','Repertorio di prompt generici e disciplinari a supporto della progettazione.'],
   ['Esempi di buone pratiche','Casistica commentata di usi appropriati e non appropriati dell\'IA.'],
   ['Materiali di cittadinanza digitale','Casi di studio reali per l\'Educazione civica.'],
-  ['Registro dei sistemi di IA','Allegato riservato, aggiornamento annuale.']
+  ['Registro degli usi dell\'IA','Allegato riservato ad aggiornamento continuo. Da non confondere con l\'elenco degli strumenti autorizzati, pubblicato sul sito ai sensi dell\'art. 6, comma 3 del Regolamento.']
 ];
 
 const LIVELLI = [
   ['Uso personale','Il docente ricorre all\'IA in autonomia per prepararsi, studiare, ideare contenuti e organizzare il proprio lavoro. Nessuno studente è coinvolto, nessun dato d\'Istituto è trattato.','Autonomia professionale, entro le regole generali del Regolamento d\'Istituto.'],
-  ['Uso didattico','L\'IA entra nelle attività rivolte agli studenti: produzione di materiali per la classe, attività d\'aula, apprendimento collaborativo.','Intenzionalità pedagogica esplicita, dichiarazione d\'uso, annotazione nel registro dei sistemi di IA.'],
+  ['Uso didattico','L\'IA entra nelle attività rivolte agli studenti: produzione di materiali per la classe, attività d\'aula, apprendimento collaborativo.','Intenzionalità pedagogica esplicita, dichiarazione d\'uso, annotazione nel registro degli usi.'],
   ['Uso istituzionale','L\'IA è impiegata nei processi interni: amministrazione, comunicazione, gestione documentale, orientamento.','Autorizzazione formale, parere del DPO ove previsto, validazione umana di ogni esito, tracciabilità completa.']
 ];
 
