@@ -16,7 +16,7 @@ tailwind.config = {
     extend: {
       colors: {
         mendel: { 900:'#12401a', 800:'#1b5e20', 700:'#2e7d32', 500:'#4caf50', 100:'#e6f2e7', 50:'#f4f9f4' },
-        soil:   { 700:'#6d4c41', 500:'#8d6e63', 100:'#efe7e4' },
+        soil:   { 700:'#6d4c41', 500:'#8d6e63', 100:'#efe7e4', 50:'#faf6f5' },
         ink:    { 900:'#1a1a1a', 700:'#3f4a41', 500:'#6b756d', 200:'#dfe5e0', 100:'#eef1ee' }
       },
       fontFamily: {
@@ -229,6 +229,18 @@ tailwind.config = {
       <div id="corso" class="mt-5 grid sm:grid-cols-2 gap-4"></div>
       <p class="mt-4 text-sm text-ink-700">A supporto del percorso: la <strong>Libreria Prompt per i docenti</strong> già pubblicata, il <strong>Regolamento d'Istituto sull'IA</strong> e il documento sugli <strong>esempi di buone pratiche</strong>.</p>
 
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Documentare la pratica: i tre portfolio</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Documentare non significa produrre carta inutile: significa lasciare traccia intelligente di ciò che si fa, così che una sperimentazione isolata diventi patrimonio dell'Istituto. Il passaggio da «ho usato uno strumento» a «la scuola ha adottato una pratica sostenibile» avviene attraverso quattro momenti: sperimentazione, documentazione, condivisione, governance.</p>
+      <div id="portfolio" class="grid lg:grid-cols-3 gap-4 mt-5"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Quali evidenze raccogliere</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Non ogni interazione va archiviata. La conservazione ha senso quando l'attività è complessa, riutilizzabile da altri o destinata a fungere da evidenza: materiali didattici significativi, adattamenti inclusivi per BES e DSA, verifiche e rubriche, sperimentazioni documentate. In questi casi il prompt conservato tutela il docente, perché dimostra la paternità intellettuale e la supervisione pedagogica sul materiale prodotto.</p>
+      <div class="mt-5 bg-white rounded-xl border border-ink-200 p-6">
+        <p class="text-xs font-semibold tracking-widest uppercase text-mendel-700">Traccia di documentazione di un'attività</p>
+        <div id="evidenze" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-2 mt-4"></div>
+        <p class="mt-5 pt-4 border-t border-ink-100 text-sm text-ink-700 leading-relaxed">La documentazione efficace è breve, chiara e riutilizzabile. Deve permettere di rispondere a tre domande: <strong>perché</strong> si è scelta l'IA e quale valore aggiunto ha prodotto; <strong>come</strong> è stata usata, con quali consegne e quali criticità; con quali <strong>responsabilità</strong>, ossia quali tutele dei dati, quali attenzioni all'inclusione e quale verifica critica degli esiti.</p>
+      </div>
+
       <div class="mt-8 border-l-4 border-mendel-500 bg-white rounded-r-xl p-6 border-y border-r border-ink-200">
         <h4 class="font-display text-xl font-semibold text-mendel-900">Rilevazione dei bisogni</h4>
         <p class="mt-2 text-ink-700 leading-relaxed">Entro settembre il Team Digitale somministra al personale docente un questionario di autovalutazione costruito sulle sei aree DigCompEdu. Una rilevazione analoga, coordinata dagli uffici, riguarda il personale ATA. Gli esiti aggregati e anonimi sono presentati al Collegio e costituiscono la linea di base del monitoraggio.</p>
@@ -240,6 +252,11 @@ tailwind.config = {
       <p class="text-xs font-semibold tracking-[0.2em] uppercase text-mendel-700">Binario C</p>
       <h2 class="font-display text-3xl sm:text-4xl font-bold text-mendel-900 mt-2">Il digitale nell'organizzazione</h2>
       <p class="text-lg text-ink-700 mt-3 max-w-3xl">Ammesso a due condizioni non negoziabili: ogni esito è validato da un operatore umano e nessuna decisione con effetti sulle persone è assunta in modo automatizzato.</p>
+
+      <figure class="mt-8 border-l-4 border-mendel-700 bg-white rounded-r-xl p-6 border-y border-r border-ink-200">
+        <blockquote class="font-display text-xl sm:text-2xl text-mendel-900 leading-snug">«L'IA serve a liberare tempo, non a creare nuovi adempimenti — e vale per tutte le componenti scolastiche.»</blockquote>
+        <figcaption class="mt-3 text-sm text-ink-500">Criterio di ammissibilità assunto dall'Istituto: se un impiego dell'IA aggiunge passaggi anziché sottrarne, non viene adottato.</figcaption>
+      </figure>
 
       <div id="orgtabs" class="flex flex-wrap gap-2 mt-8"></div>
       <div id="orgpanel" class="mt-4"></div>
@@ -283,10 +300,26 @@ tailwind.config = {
         </table></div>
       </div>
 
-      <div class="mt-8 bg-mendel-50 border border-mendel-100 rounded-xl p-6">
-        <h4 class="font-display text-xl font-semibold text-mendel-900">Registro dei sistemi di IA</h4>
-        <p class="mt-2 text-ink-700 leading-relaxed">L'Istituto istituisce e aggiorna almeno annualmente un registro dei sistemi di IA utilizzati nei processi didattici e amministrativi, con indicazione dell'ambito d'uso, degli utenti, della classificazione del rischio e delle misure adottate. Il registro compilato è allegato riservato del curricolo ed è messo a disposizione degli organi di controllo su richiesta.</p>
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Tre livelli d'uso, tre gradi di presidio</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Non tutti gli impieghi dell'IA hanno lo stesso peso. Più l'uso si sposta verso l'istituzionale, più diventano stringenti la formalizzazione, la tracciabilità e la tutela dei dati.</p>
+      <div id="livelli" class="grid md:grid-cols-3 gap-4 mt-5"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Classificazione del rischio nell'uso quotidiano</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">La scala che segue traduce l'approccio basato sul rischio dell'AI Act in un criterio operativo utilizzabile da ciascun docente prima di iniziare un'attività. Il principio è semplice: più cresce l'impatto delle decisioni sulla persona dello studente, più aumenta la responsabilità professionale di chi impiega lo strumento.</p>
+      <div id="rischi" class="grid md:grid-cols-3 gap-4 mt-5"></div>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Il registro dei sistemi di IA</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">L'Istituto istituisce e aggiorna almeno annualmente un registro dei sistemi di IA impiegati nei processi didattici e amministrativi. Il registro compilato è allegato riservato del curricolo ed è messo a disposizione degli organi di controllo su richiesta.</p>
+
+      <div class="mt-5 bg-white rounded-xl border-l-4 border-soil-700 border-y border-r border-ink-200 p-6">
+        <h4 class="font-display text-lg font-semibold text-soil-700">Perché serve: il rischio della «Shadow AI»</h4>
+        <p class="mt-2 text-ink-700 leading-relaxed">In assenza di ricognizione, l'adozione avviene dal basso e resta invisibile: singoli docenti sperimentano strumenti generici, talvolta inserendo dati riferibili a studenti in piattaforme non verificate, senza che l'Istituto ne abbia contezza. Il registro non serve a controllare le persone, ma a rendere l'uso conoscibile, confrontabile e migliorabile.</p>
       </div>
+
+      <p class="mt-6 text-ink-700 max-w-3xl">Il registro risponde a cinque domande essenziali: <strong>sapere</strong> quali sistemi sono in uso, <strong>capire</strong> per quali finalità, <strong>valutare</strong> quali dati vi vengono immessi, <strong>distinguere</strong> gli usi accettabili da quelli rischiosi o da escludere, <strong>conservare</strong> le evidenze didattiche e organizzative prodotte.</p>
+
+      <h4 class="font-display text-xl font-semibold text-mendel-900 mt-8">Campi essenziali</h4>
+      <div id="registro" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4"></div>
     </section>
 
     <!-- ===== 7. ATTUAZIONE ===== -->
@@ -303,8 +336,32 @@ tailwind.config = {
       <div id="kpi" class="grid sm:grid-cols-2 gap-3 mt-5"></div>
       <p class="mt-5 text-sm text-ink-700 max-w-3xl">Al monitoraggio quantitativo si affianca una rilevazione qualitativa: questionario alle classi terze e quinte e incontro annuale di restituzione con i rappresentanti di studenti e genitori.</p>
 
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Due checklist operative</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Il ciclo di implementazione in cinque fasi è la procedura d'Istituto. Queste sono invece le domande che il singolo docente si pone prima di adottare uno strumento e prima di portarlo in classe: la scelta di uno strumento è già di per sé una scelta educativa, perché modella l'ambiente e le modalità dell'apprendimento.</p>
+      <div class="grid md:grid-cols-2 gap-5 mt-5">
+        <div class="bg-white rounded-xl border-t-4 border-mendel-700 border-x border-b border-ink-200 p-6">
+          <p class="text-xs font-semibold tracking-widest uppercase text-mendel-700">Prima di adottare uno strumento</p>
+          <ol id="checkstrum" class="mt-4 space-y-2 text-sm"></ol>
+        </div>
+        <div class="bg-white rounded-xl border-t-4 border-soil-500 border-x border-b border-ink-200 p-6">
+          <p class="text-xs font-semibold tracking-widest uppercase text-soil-700">Prima di usarlo con la classe</p>
+          <ol id="checkatt" class="mt-4 space-y-2 text-sm"></ol>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-ink-700 max-w-3xl">L'IA va inserita dentro una regia didattica: la tecnologia non sostituisce il docente, e l'attività resta guidata da una progettazione che ne definisce scopi, regole e modalità inclusive.</p>
+
+      <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">L'audit educativo</h3>
+      <p class="text-ink-700 mt-2 max-w-3xl">Accanto agli indicatori quantitativi, il Team Digitale conduce annualmente una revisione qualitativa delle tecnologie adottate. Non è un'ispezione né un procedimento a carico di alcuno: è la verifica che gli strumenti in uso restino al servizio dell'apprendimento e dell'equità. Ne fanno parte la valutazione d'impatto etico e pedagogico, la verifica della conformità in materia di protezione dei dati e il coinvolgimento della comunità scolastica: Dirigente, DPO, docenti, studenti e famiglie.</p>
+      <div id="audit" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5"></div>
+      <p class="mt-4 text-sm text-ink-500 max-w-3xl">L'esito dell'audit non è una graduatoria: per ciascun sistema si conclude per la conferma, la revisione o la dismissione, in coerenza con la quinta fase del ciclo di implementazione.</p>
+
       <h3 class="font-display text-2xl font-semibold text-mendel-900 mt-12">Documenti collegati</h3>
       <div id="allegati" class="grid sm:grid-cols-2 gap-3 mt-4"></div>
+
+      <figure class="mt-12 bg-mendel-900 text-white rounded-xl p-7">
+        <blockquote class="font-display text-xl sm:text-2xl leading-snug">«Una buona scuola non è quella più tecnologica, ma quella meglio organizzata.»</blockquote>
+        <figcaption class="mt-3 text-sm text-mendel-100/90">È il criterio con cui questo curricolo chiede di essere giudicato fra tre anni: non dal numero di strumenti introdotti, ma dalla qualità dell'organizzazione che li governa.</figcaption>
+      </figure>
     </section>
 
   </div>
@@ -375,7 +432,8 @@ const CRITICITA = [
   ['Livelli disomogenei fra i docenti','Una minoranza di utilizzatori avanzati e un\'area di colleghi che manifesta diffidenza verso l\'IA.','Percorsi differenziati per livello DigCompEdu, con partenza da un corso base non tecnicistico.'],
   ['Uso non dichiarato dell\'IA da parte degli studenti','L\'uso c\'è già, ma avviene in assenza di regole condivise sulla trasparenza.','Dichiarazione d\'uso negli elaborati valutati e rubriche che valutano il processo.'],
   ['Frammentazione delle esperienze','Attività digitali di qualità concentrate in singole classi, senza progressione verticale.','Traguardi annuali per l\'intero quinquennio e monte ore minimo garantito.'],
-  ['Assenza di ricognizione dei sistemi in uso','Non esiste un quadro dei sistemi di IA effettivamente impiegati nei processi.','Registro d\'Istituto dei sistemi di IA con classificazione del rischio.']
+  ['Assenza di ricognizione dei sistemi in uso','Non esiste un quadro dei sistemi di IA effettivamente impiegati nei processi: l\'adozione avviene dal basso e resta invisibile all\'Istituto.','Registro d\'Istituto dei sistemi di IA con classificazione del rischio.'],
+  ['Delega passiva e perdita di competenza','L\'atteggiamento «tanto lo fa l\'IA» produce appiattimento del linguaggio, riduzione della capacità di giudizio e progressiva perdita di padronanza. Riguarda gli studenti quanto i docenti e il personale.','Verifica critica dell\'output come passaggio obbligato e non facoltativo; valutazione del processo e non del solo prodotto; individuazione esplicita degli ambiti in cui l\'Istituto sceglie di non ricorrere all\'IA.']
 ];
 
 const NORME = [
@@ -457,9 +515,11 @@ const CORSO = [
 ];
 
 const ORG = [
-  ['Dirigenza','Supporto all\'analisi di documenti programmatici (PTOF, RAV, PdM); riorganizzazione di orari complessi, comprese le turnazioni di laboratorio e dell\'azienda agraria; pianificazione della formazione del personale.','Nessun dato personale identificativo nei prompt; la decisione resta integralmente in capo al Dirigente.'],
-  ['DSGA e segreteria','Redazione assistita di comunicazioni ordinarie e circolari; sintesi di normativa; ottimizzazione dell\'inventario di beni, serre, macchine agricole e attrezzature di laboratorio.','Verifica puntuale dei riferimenti normativi citati; divieto di trattamento di dati particolari.'],
-  ['Comunicazione','Supporto alla stesura e revisione dei contenuti del sito e delle comunicazioni alle famiglie; verifiche di accessibilità.','Responsabilità editoriale umana; rispetto delle linee guida sull\'accessibilità.'],
+  ['Dirigenza','Supporto all\'analisi di documenti programmatici (PTOF, RAV, PdM); sintesi di testi normativi e confronto fra versioni successive di una norma; riorganizzazione di orari complessi, comprese le turnazioni di laboratorio e dell\'azienda agraria; pianificazione della formazione del personale.','Nessun dato personale identificativo nei prompt; ogni riferimento normativo restituito dal sistema è verificato sulla fonte ufficiale prima dell\'uso; la decisione resta integralmente in capo al Dirigente.'],
+  ['Organi collegiali','Predisposizione di bozze di ordine del giorno; tracce preliminari di delibere; revisione linguistica e riordino dei verbali; sintesi dei documenti istruttori messi a disposizione per la discussione.','Il verbale resta atto del segretario verbalizzante e dell\'organo che lo approva: il sistema può intervenire sulla forma, mai sul contenuto delle decisioni assunte.'],
+  ['DSGA e segreteria','Redazione assistita di comunicazioni ordinarie e circolari; modulistica standardizzata; sintesi di normativa; check-list procedurali; supporto alla stesura di bandi e progetti; ottimizzazione dell\'inventario di beni, serre, macchine agricole e attrezzature di laboratorio.','Verifica puntuale dei riferimenti normativi citati; divieto di trattamento di dati particolari; nessun impiego nelle procedure di reclutamento, selezione o valutazione del personale.'],
+  ['Gestione documentale','Classificazione e archiviazione assistita degli atti; ricerca semantica nelle raccolte documentali; predisposizione di risposte tipo alle domande ricorrenti di famiglie e personale.','Esclusivamente in ambienti amministrati dall\'Istituto. Se una risposta automatizzata è resa disponibile all\'utenza, è dichiarato in modo esplicito che l\'interlocutore è un sistema automatico.'],
+  ['Comunicazione','Supporto alla stesura e revisione dei contenuti del sito e delle comunicazioni alle famiglie; traduzione e semplificazione di avvisi destinati a famiglie non italofone; verifiche di accessibilità.','Responsabilità editoriale umana; ogni traduzione destinata a produrre effetti giuridici è validata da persona competente; rispetto delle linee guida sull\'accessibilità.'],
   ['Azienda agraria e laboratori','Analisi di dati colturali, meteorologici e fitosanitari a supporto delle scelte tecniche.','Validazione da parte del docente tecnico-pratico o del responsabile dell\'azienda agraria.']
 ];
 
@@ -483,6 +543,8 @@ const NORMATIVI = [
   ['Privacy by design e by default','Sono preferiti ambienti amministrati dall\'Istituto, con profilazione disattivata e accessi differenziati per età, come già configurato nella console di amministrazione del dominio.'],
   ['Diritto di non partecipazione','Studenti e famiglie possono decidere consapevolmente sull\'utilizzo dei dati per finalità connesse a sistemi di IA, senza pregiudizio per le opportunità educative: sono previste attività equivalenti.'],
   ['Valutazione d\'impatto','Prima di adottare un nuovo sistema che tratti dati di minori, il Team Digitale sottopone al DPO una scheda di valutazione preliminare; ove necessario si procede a DPIA.'],
+  ['Valutazione d\'impatto sui diritti fondamentali (FRIA)','Distinta dalla DPIA e introdotta dall\'AI Act per determinate categorie di sistemi ad alto rischio, considera gli effetti sui diritti delle persone e non soltanto sulla protezione dei dati. L\'Istituto vi ricorre qualora un sistema riconducibile all\'Allegato III dovesse comunque essere introdotto nei processi.'],
+  ['Obbligo di trasparenza','Quando un sistema interagisce direttamente con studenti, famiglie o personale, o quando un contenuto è stato generato sinteticamente, la circostanza è dichiarata in modo esplicito e comprensibile: nessuno deve credere di dialogare con una persona senza esserne informato.'],
   ['Alfabetizzazione obbligatoria','In attuazione dell\'art. 4 dell\'AI Act, l\'Istituto garantisce a tutto il personale che utilizza sistemi di IA un livello adeguato di alfabetizzazione, documentato dal piano di formazione.']
 ];
 
@@ -544,6 +606,53 @@ const ALLEGATI = [
   ['Esempi di buone pratiche','Casistica commentata di usi appropriati e non appropriati dell\'IA.'],
   ['Materiali di cittadinanza digitale','Casi di studio reali per l\'Educazione civica.'],
   ['Registro dei sistemi di IA','Allegato riservato, aggiornamento annuale.']
+];
+
+const LIVELLI = [
+  ['Uso personale','Il docente ricorre all\'IA in autonomia per prepararsi, studiare, ideare contenuti e organizzare il proprio lavoro. Nessuno studente è coinvolto, nessun dato d\'Istituto è trattato.','Autonomia professionale, entro le regole generali del Regolamento d\'Istituto.'],
+  ['Uso didattico','L\'IA entra nelle attività rivolte agli studenti: produzione di materiali per la classe, attività d\'aula, apprendimento collaborativo.','Intenzionalità pedagogica esplicita, dichiarazione d\'uso, annotazione nel registro dei sistemi di IA.'],
+  ['Uso istituzionale','L\'IA è impiegata nei processi interni: amministrazione, comunicazione, gestione documentale, orientamento.','Autorizzazione formale, parere del DPO ove previsto, validazione umana di ogni esito, tracciabilità completa.']
+];
+
+const RISCHI = [
+  ['Basso','Uso generico, senza alcun dato personale','Brainstorming di idee didattiche; progettazione di attività; produzione di materiali non riferiti a persone identificabili.','Sperimentazione libera entro il Regolamento d\'Istituto; resta ferma la verifica dei contenuti prodotti.'],
+  ['Medio','Materiali riferiti alla classe, senza dati nominativi','Adattamenti e semplificazioni per BES e DSA; generazione di verifiche ed esercizi; formulazione di feedback didattici.','Nessun nome, valutazione o certificazione nel prompt; verifica critica dell\'output prima dell\'uso; annotazione nel registro.'],
+  ['Alto','Dati personali degli studenti o impatto diretto sul percorso formativo','Attribuzione di valutazioni; profilazione; decisioni su ammissione o orientamento; strumenti automatizzati applicati agli studenti.','Impiego escluso in via di autolimitazione. Ove un sistema di questa natura fosse imposto da norma o da fornitore, si procede a DPIA e, ricorrendone i presupposti, a FRIA.']
+];
+
+const REGISTRO = [
+  ['Chi e quando','Data dell\'utilizzo','Docente, ufficio o organo coinvolto','Destinatari: classe, gruppo o utenti finali'],
+  ['Risorse e input','Sistema o applicativo impiegato','Tipologia dei dati inseriti','Presenza di dati personali o particolari'],
+  ['Rischi e tutele','Livello di rischio attribuito','Misure di mitigazione adottate','Autorizzazione o nulla osta acquisiti'],
+  ['Finalità ed esiti','Scopo didattico o amministrativo','Output prodotto','Evidenze conservate e loro collocazione']
+];
+
+const PORTFOLIO = [
+  ['Portfolio del docente','Individuale','UDA progettate con l\'IA · verifiche rielaborate · rubriche valutative · materiali semplificati per l\'inclusione · prompt efficaci · errori riscontrati · criteri di scelta degli strumenti · riflessione professionale.','Rende visibile e documentabile la progressione di livello DigCompEdu nel tempo.'],
+  ['Portfolio del consiglio di classe','Collegiale','Attività interdisciplinari · criteri comuni d\'uso · regole sui compiti a casa · policy di citazione · adattamenti inclusivi · strumenti consigliati · osservazioni condivise su impatto, motivazione e autonomia degli studenti.','Assicura che lo studente incontri regole coerenti fra le discipline, non prassi individuali divergenti.'],
+  ['Portfolio d\'Istituto','Annuale','Sistemi utilizzati · pratiche documentate · formazione erogata · criticità rilevate · interventi di inclusione · aggiornamenti del Regolamento · rapporti con famiglie e studenti · sperimentazioni concluse · proposte per l\'anno successivo.','Confluisce nel report annuale al Collegio e alimenta la revisione del curricolo.']
+];
+
+const EVIDENZE = [
+  'Obiettivo didattico','Prompt utilizzato','Output generato','Revisione del docente','Materiali finali',
+  'Attività proposta','Rubriche e criteri','Riflessioni degli studenti','Criticità emerse','Miglioramenti possibili'
+];
+
+const CHECKSTRUM = [
+  'Chi è il fornitore del servizio?','Quali dati raccoglie?','Dove sono conservati?','I dati alimentano l\'addestramento dei modelli?',
+  'Esiste una versione dedicata alle scuole?','Quali tutele sono previste per i minori?','Il servizio è accessibile?',
+  'L\'output è verificabile?','Il docente mantiene il controllo del processo?','Il costo della licenza è sostenibile nel tempo?'
+];
+
+const CHECKATT = [
+  'Ho chiarito l\'obiettivo didattico?','Ho spiegato agli studenti che cosa possono fare?','Ho stabilito che cosa non devono fare?',
+  'Ho previsto la dichiarazione d\'uso?','Ho evitato dati personali non necessari?','Ho previsto un momento di verifica critica?',
+  'Ho considerato gli studenti più fragili?','Ho definito criteri di valutazione chiari per l\'attività?'
+];
+
+const AUDIT = [
+  'Che cosa stiamo effettivamente usando?','Funziona davvero?','È coerente con il PTOF?','Protegge gli studenti?',
+  'Migliora l\'apprendimento?','Genera dipendenza o autonomia?','Riduce o amplia le disuguaglianze?','Va confermato, modificato o abbandonato?'
 ];
 
 /* ================= RENDER ================= */
@@ -756,6 +865,62 @@ $('kpi').innerHTML = KPI.map(([v,d,m])=>`
 $('allegati').innerHTML = ALLEGATI.map(([t,d])=>`
   <div class="bg-white rounded-lg border border-ink-200 p-4">
     <p class="font-semibold text-sm text-mendel-900">${t}</p><p class="text-sm text-ink-700 mt-1">${d}</p>
+  </div>`).join('');
+
+$('livelli').innerHTML = LIVELLI.map(([t,d,p],i)=>`
+  <div class="card bg-white rounded-xl border border-ink-200 overflow-hidden flex flex-col">
+    <div class="px-5 py-3 ${i===0?'bg-mendel-500':i===1?'bg-mendel-700':'bg-mendel-900'} text-white">
+      <p class="font-semibold">${t}</p>
+    </div>
+    <div class="p-5 flex-grow"><p class="text-sm text-ink-700 leading-relaxed">${d}</p>
+      <p class="text-sm mt-3 pt-3 border-t border-ink-100"><strong class="text-mendel-800">Presidio richiesto.</strong> ${p}</p></div>
+  </div>`).join('');
+
+$('rischi').innerHTML = RISCHI.map(([l,s,e,m],i)=>`
+  <div class="card bg-white rounded-xl border border-ink-200 overflow-hidden flex flex-col">
+    <div class="px-5 py-2.5 flex items-center gap-2 ${i===0?'bg-mendel-100 text-mendel-900':i===1?'bg-soil-100 text-soil-700':'bg-soil-700 text-white'}">
+      <span class="text-[11px] font-bold tracking-widest uppercase">Rischio ${l}</span>
+    </div>
+    <div class="p-5 flex-grow">
+      <p class="font-semibold text-sm text-mendel-900">${s}</p>
+      <p class="text-sm text-ink-700 mt-2 leading-relaxed">${e}</p>
+      <p class="text-sm mt-3 pt-3 border-t border-ink-100"><strong class="text-mendel-800">Che cosa comporta.</strong> ${m}</p>
+    </div>
+  </div>`).join('');
+
+$('registro').innerHTML = REGISTRO.map(([t,...campi])=>`
+  <div class="bg-white rounded-lg border-t-4 border-mendel-700 border-x border-b border-ink-200 p-4">
+    <p class="text-xs font-semibold tracking-wide uppercase text-mendel-700">${t}</p>
+    <ul class="mt-2 space-y-1.5">${campi.map(c=>`<li class="text-sm text-ink-700 flex gap-2"><span class="text-mendel-500 font-bold leading-tight">·</span><span>${c}</span></li>`).join('')}</ul>
+  </div>`).join('');
+
+$('portfolio').innerHTML = PORTFOLIO.map(([t,l,c,f])=>`
+  <div class="card bg-white rounded-xl border border-ink-200 overflow-hidden flex flex-col">
+    <div class="px-5 py-3 bg-mendel-800 text-white flex items-baseline justify-between gap-3">
+      <p class="font-semibold text-sm">${t}</p>
+      <span class="text-[11px] font-semibold px-2 py-0.5 rounded bg-white/15 flex-shrink-0">${l}</span>
+    </div>
+    <div class="p-5 flex-grow"><p class="text-sm text-ink-700 leading-relaxed">${c}</p>
+      <p class="text-sm mt-3 pt-3 border-t border-ink-100"><strong class="text-mendel-800">A che cosa serve.</strong> ${f}</p></div>
+  </div>`).join('');
+
+$('evidenze').innerHTML = EVIDENZE.map((e,i)=>`
+  <div class="bg-mendel-50 rounded-lg px-3 py-2.5 flex gap-2 items-baseline">
+    <span class="text-[11px] font-bold text-mendel-700 tabular-nums flex-shrink-0">${String(i+1).padStart(2,'0')}</span>
+    <span class="text-sm text-ink-900 leading-snug">${e}</span>
+  </div>`).join('');
+
+const checkList = arr => arr.map(q=>`
+  <li class="flex gap-3 items-baseline">
+    <span class="text-mendel-500 flex-shrink-0">☐</span><span class="text-ink-700 leading-snug">${q}</span>
+  </li>`).join('');
+$('checkstrum').innerHTML = checkList(CHECKSTRUM);
+$('checkatt').innerHTML = checkList(CHECKATT);
+
+$('audit').innerHTML = AUDIT.map((q,i)=>`
+  <div class="bg-white rounded-lg border border-ink-200 p-4">
+    <span class="font-display text-2xl font-bold text-mendel-100 leading-none">${String(i+1).padStart(2,'0')}</span>
+    <p class="text-sm text-ink-900 mt-1.5 leading-snug">${q}</p>
   </div>`).join('');
 
 /* ================= CHARTS ================= */
