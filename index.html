@@ -695,6 +695,7 @@ document.querySelectorAll('.navlink').forEach(b=>b.addEventListener('click',()=>
   SECTIONS.forEach(([id])=>$('s-'+id).classList.add('hidden'));
   const s=$('s-'+b.dataset.sec); s.classList.remove('hidden');
   s.classList.remove('fade'); void s.offsetWidth; s.classList.add('fade');
+  if (typeof resizeCharts === 'function') requestAnimationFrame(resizeCharts);
   window.scrollTo({top:0,behavior:'smooth'});
 }));
 
@@ -951,7 +952,7 @@ $('audit').innerHTML = AUDIT.map((q,i)=>`
 Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
 Chart.defaults.color = '#3f4a41';
 
-new Chart($('chartOre'), {
+const chartOre = new Chart($('chartOre'), {
   type:'bar',
   data:{
     labels:['1ª','2ª','3ª','4ª','5ª'],
@@ -969,20 +970,30 @@ new Chart($('chartOre'), {
   }
 });
 
-new Chart($('chartEdu'), {
+const EDU_SHORT = ['Coinvolgimento','Risorse digitali','Pratiche di insegn.','Valutazione','Valorizzazione stud.','Facilitare comp. dig.'];
+const chartEdu = new Chart($('chartEdu'), {
   type:'radar',
   data:{
-    labels:EDU.map(e=>e[0].split('. ')[1].split(' ').slice(0,2).join(' ')),
+    labels:EDU_SHORT,
     datasets:[{label:'Priorità', data:EDU.map(e=>e[3]),
       backgroundColor:'rgba(76,175,80,.22)', borderColor:'#1b5e20', pointBackgroundColor:'#1b5e20', borderWidth:2}]
   },
   options:{
     responsive:true, maintainAspectRatio:false,
-    scales:{r:{min:0,max:3,ticks:{stepSize:1, display:false}, pointLabels:{font:{size:10}}, grid:{color:'#dfe5e0'}, angleLines:{color:'#dfe5e0'}}},
+    layout:{padding:16},
+    scales:{r:{min:0,max:3,ticks:{stepSize:1, display:false}, pointLabels:{font:{size:10}, padding:14}, grid:{color:'#dfe5e0'}, angleLines:{color:'#dfe5e0'}}},
     plugins:{legend:{display:false},
       tooltip:{callbacks:{label:c=>['','Bassa','Media','Alta'][c.raw]}}}
   }
 });
+
+/* Ensure both charts are correctly sized even though their tab may be
+   hidden (display:none) at creation time — otherwise Chart.js draws them
+   at 0×0 and they appear broken/overlapping once the section is shown
+   or printed. */
+function resizeCharts(){ chartOre.resize(); chartEdu.resize(); }
+window.addEventListener('beforeprint', resizeCharts);
+window.addEventListener('resize', resizeCharts);
 </script>
 </body>
 </html>
