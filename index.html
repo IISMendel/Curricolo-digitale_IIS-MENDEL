@@ -46,8 +46,35 @@ tailwind.config = {
   @media (prefers-reduced-motion: reduce) { *{animation:none!important; transition:none!important; scroll-behavior:auto!important;} }
   @media print {
     nav, .noprint { display:none !important; }
-    section { display:block !important; page-break-after: always; }
     body { background:#fff; }
+    /* Start each top-level section on a fresh page, but do NOT force a
+       trailing page-break after it — that was leaving near-empty pages
+       whenever a section's content ended early on a page. */
+    section { display:block !important; }
+    section + section { break-before: page; page-break-before: always; }
+    /* Never split a card, table row, or chart container across a page
+       boundary — forces the whole block onto the next page instead of
+       cutting it mid-content. */
+    .card, table, tr, [class*="rounded"],
+    #chartOre, #chartEdu, canvas {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    /* Exception: a rounded container that wraps a (possibly long) table
+       must be allowed to break across pages — otherwise a 15-row table
+       gets shoved as an indivisible block and either overflows badly or
+       leaves a large gap on the previous page. Individual <tr> rows
+       still won't split, and the header repeats on each new page. */
+    div:has(table) {
+      break-inside: auto;
+      page-break-inside: auto;
+    }
+    /* Keep a heading attached to the paragraph(s) that follow it. */
+    h1, h2, h3, h4 {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    thead { display: table-header-group; }
   }
   @media screen {
     section.print\:flex { display: none !important; }
