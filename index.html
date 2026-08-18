@@ -49,10 +49,33 @@ tailwind.config = {
     section { display:block !important; page-break-after: always; }
     body { background:#fff; }
   }
+  @media screen {
+    section.print\:flex { display: none !important; }
+  }
+  @media print {
+    section.print\:flex {
+      display: flex !important;
+      width: 100%;
+      min-height: 100vh;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
   :focus-visible { outline:3px solid #4caf50; outline-offset:2px; }
 </style>
 </head>
 <body class="font-sans antialiased">
+
+<!-- ===== PRINT-ONLY COVER (visible only when printing / exporting to PDF) ===== -->
+<section class="hidden print:flex print:flex-col print:items-center print:justify-center bg-mendel-900 text-white text-center" style="page-break-after: always;">
+  <img id="print-cover-logo" alt="Logo IIS Gregorio Mendel" class="w-28 h-28 rounded-full bg-white mb-8">
+  <p class="text-xs font-semibold tracking-[0.3em] uppercase text-mendel-100">Istituto di Istruzione Superiore «Gregorio Mendel»</p>
+  <h1 class="font-display text-5xl font-bold mt-4 leading-tight max-w-3xl">Curricolo Digitale di Istituto</h1>
+  <div class="w-16 h-1 bg-mendel-500 mt-6 mb-6"></div>
+  <p class="text-lg text-mendel-50 max-w-xl">Competenze digitali, cittadinanza e governance dell'Intelligenza Artificiale nella scuola.</p>
+  <p class="text-sm text-mendel-100 mt-10">Versione 2.0 — a.s. 2026/2027 · Allegato al PTOF 2025/2028</p>
+  <p class="text-sm text-mendel-100">Quadri europei DigComp 3.0 e DigCompEdu · Villa Cortese (MI)</p>
+</section>
 
 <div class="lg:flex lg:min-h-screen">
 
@@ -963,7 +986,7 @@ const chartOre = new Chart($('chartOre'), {
     ]
   },
   options:{
-    responsive:true, maintainAspectRatio:false,
+    responsive:true, maintainAspectRatio:false, animation:false,
     scales:{x:{stacked:true, grid:{display:false}}, y:{stacked:true, title:{display:true,text:'ore annue'}, grid:{color:'#eef1ee'}}},
     plugins:{legend:{position:'bottom', labels:{boxWidth:12, padding:14}},
       title:{display:true, text:'Ore annue dedicate alla competenza digitale', padding:{bottom:12}, font:{size:13,weight:'600'}}}
@@ -979,7 +1002,7 @@ const chartEdu = new Chart($('chartEdu'), {
       backgroundColor:'rgba(76,175,80,.22)', borderColor:'#1b5e20', pointBackgroundColor:'#1b5e20', borderWidth:2}]
   },
   options:{
-    responsive:true, maintainAspectRatio:false,
+    responsive:true, maintainAspectRatio:false, animation:false,
     layout:{padding:16},
     scales:{r:{min:0,max:3,ticks:{stepSize:1, display:false}, pointLabels:{font:{size:10}, padding:14}, grid:{color:'#dfe5e0'}, angleLines:{color:'#dfe5e0'}}},
     plugins:{legend:{display:false},
@@ -994,6 +1017,15 @@ const chartEdu = new Chart($('chartEdu'), {
 function resizeCharts(){ chartOre.resize(); chartEdu.resize(); }
 window.addEventListener('beforeprint', resizeCharts);
 window.addEventListener('resize', resizeCharts);
+
+/* Populate the print-only cover logo by cloning the src already used in
+   the sidebar header, so the (large) base64 image data doesn't need to
+   be duplicated in the markup. */
+(function(){
+  var src = document.querySelector('nav img')?.src;
+  var target = document.getElementById('print-cover-logo');
+  if (src && target) target.src = src;
+})();
 </script>
 </body>
 </html>
